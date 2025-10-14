@@ -1,62 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPORT - Registro</title>
     <link rel="stylesheet" href="../static/css/registro.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <title>Registro</title>
 </head>
 <body>
-    
-    <section>
 
-    <div class="container">
+    <div class="register-wrapper">
 
-        <h1>Crear Cuenta</h1>
+        <div class="register-left">
+            <img src="../static/img/ISP.png" alt="Mapa del Perú con temática de fútbol">
+        </div>
 
-        <form action="">
+        <div class="register-right">
+            <div class="register-box">
+                <h1 class="logo">SPORT</h1>
+                <p class="subtitle">Gestión de Partidos de Fútbol - Perú</p>
 
-            <p>Usuario</p>
-            <input type="text" placeholder="Ingresa tu Usuario" required>
+                <h2 class="title">Crear Cuenta</h2>
 
+                <form action="#" method="post">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Ingresa tu nombre completo" required>
 
-            <p>Correo</p>
-            <input type="email" placeholder="Ingresa tu Correo" required>
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" placeholder="Ingresa tu correo" required>
 
-            <p>Fecha de Nacimiento</p>
-            <input type="date" placeholder="Ingresa tu fecha de naciemiento" required>
+                    <label for="usuario">Nombre de usuario</label>
+                    <input type="text" id="usuario" placeholder="Elige un nombre de usuario" required>
 
-            <p>Contraseña</p>
-            <input type="password"  class="password" placeholder="Ingresa tu Contraseña">
+                    <label for="password">Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Crea una contraseña" required>
+                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    </div>
 
-            <p>Contraseña</p>
-            <input type="password"  class="password" placeholder="Ingresa tu Contraseña">        
-            
-             <div class="opciones">
-                <label >
-                   Aceptas los terminos y condiciones
-                    <input type="checkbox" name="" id="">
-                   
-                   
-                </label>
+                    <label for="confirmar">Confirmar contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmar" placeholder="Repite tu contraseña" required>
+                        <i class="bi bi-eye-slash" id="toggleConfirm"></i>
+                    </div>
+
+                    <input class="btn" type="submit" value="Registrarse">
+
+                    <div class="ask">
+                        <p>¿Ya tienes una cuenta? <a href="../templates/index.html">Inicia sesión aquí</a></p>
+                    </div>
+                </form>
             </div>
-
-
-            <div class="ask">
-                 <p>Aun no tienes cuenta? <a href="">registrate aqui</a></p>
-            </div>
-            
-            <input class="btn" type="submit" value="Registrarse">
-
-        </form>
-
-  
-
+        </div>
     </div>
-
-        
-    </section>
 
     <script src="../static/js/password.js"></script>
 </body>
