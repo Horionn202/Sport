@@ -15,4 +15,9 @@ public class UsuarioController {
     public String verLogin() {
         return "IniciarSeccion";
     }
+
+    @GetMapping("/registro-equipo")
+    public String verRegistroEquipo() {
+        return "RegistroEquipo";
+    }
 }

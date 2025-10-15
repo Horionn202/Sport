@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Registro de equipo</title>
+  <link rel="stylesheet" href="/CSS/RegistroEquipo.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <span>SPORT CONNECT</span>
+      </div>
+      <nav class="menu">
+        <a href="/">Inicio</a>
+        <a href="#">Ayuda</a>
+        <a href="#">Soporte</a>
+        <a href="#">Acerca de</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container">
+    <div class="background">
+      <img src="/IMG/Fondo.png" alt="Fondo deportivo">
+    </div>
+
+    <div class="register-card">
+      <div class="logo">
+        <img src="/IMG/Logo.svg" alt="Sport Connect Logo">
+        <h1>SPORT CONNECT</h1>
+      </div>
+      <h2>Registro de equipo</h2>
+
+      <form>
+        <label for="nombre-equipo">Nombre del equipo</label>
+        <input type="text" id="nombre-equipo" placeholder="Ej: Los Halcones FC" required>
+
+        <label for="entrenador">Nombre del entrenador</label>
+        <input type="text" id="entrenador" placeholder="Ej: Carlos Pérez" required>
+
+        <label for="email">Correo electrónico del entrenador</label>
+        <input type="email" id="email" placeholder="Ej: entrenador@gmail.com" required>
+
+        <label for="telefono">Teléfono de contacto</label>
+        <input type="tel" id="telefono" placeholder="Ej: 987654321" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" required>
+          <option value="">Selecciona la categoría</option>
+          <option value="infantil">Infantil</option>
+          <option value="juvenil">Juvenil</option>
+          <option value="mayores">Mayores</option>
+        </select>
+
+        <label for="liga">Liga a la que pertenece</label>
+        <input type="text" id="liga" placeholder="Ej: Liga Distrital de Miraflores" required>
+
+        <label for="descripcion">Descripción o lema del equipo</label>
+        <textarea id="descripcion" rows="3" placeholder="Ej: Unidos por la pasión del fútbol"></textarea>
+
+        <button class="btn-primary" type="submit">Registrar equipo</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 Sport Connect. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Términos de Servicio</a>
+    </div>
+  </footer>
+</body>
+</html>
