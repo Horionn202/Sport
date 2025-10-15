@@ -1,108 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sport Connect - Dashboard</title>
-    <link rel="stylesheet" href="/css/DasboardPrincipal.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Plataforma</title>
+  <link rel="stylesheet" href="/CSS/DasboardPrincipal.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-container">
-            <div class="header-logo">
-                <img src="/img/Logo.svg" alt="Logo Sport Connect">
-                <span>SPORT CONNECT</span>
-            </div>
-            <nav class="menu">
-                <a href="/registro-equipo">Equipos</a>
-                <a href="#">Ligas</a>
-                <a href="#">Partidos</a>
-                <a href="#">Estadísticas</a>
-                <a href="/login" class="btn-login">Iniciar sesión</a>
-                <a href="#" class="btn-login">Ya tengo cuenta</a>
-            </nav>
-        </div>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo">
+        <span>SPORT CONNECT</span>
+      </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Bienvenido a <span>Sport Connect</span></h1>
-            <p>Gestiona tus ligas, equipos, jugadores y partidos de forma rápida y moderna.</p>
-            <button class="btn-primary">Ir al Panel de Administración</button>
-        </div>
-        <div class="hero-img">
-            <img src="/img/Fondo.png" alt="Deportes" />
-        </div>
-    </section>
-
-    <!-- TARJETAS DE RESUMEN -->
-    <section class="summary">
-        <div class="card">
-            <h3>Ligas activas</h3>
-            <p>8</p>
-        </div>
-        <div class="card">
-            <h3>Equipos registrados</h3>
-            <p>124</p>
-        </div>
-        <div class="card">
-            <h3>Jugadores</h3>
-            <p>1,054</p>
-        </div>
-        <div class="card">
-            <h3>Partidos programados</h3>
-            <p>12</p>
-        </div>
-    </section>
-
-    <!-- SECCIONES DE DATOS -->
-    <main class="data">
-        <div class="data-card">
-            <h2>Próximos partidos</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Equipo A</th>
-                        <th>Equipo B</th>
-                        <th>Liga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>15/10/2025</td>
-                        <td>Tigres FC</td>
-                        <td>Leones SC</td>
-                        <td>Sub-18</td>
-                    </tr>
-                    <tr>
-                        <td>16/10/2025</td>
-                        <td>Águilas</td>
-                        <td>Centauros</td>
-                        <td>Libre</td>
-                    </tr>
-                </tbody>
-            </table>
+      <nav class="menu">
+        <div class="dropdown">
+          <a href="#">Inicio</a>
         </div>
 
-        <div class="data-card results">
-            <h2>Últimos resultados</h2>
-            <ul>
-                <li><strong>Tigres FC</strong> 2 - 1 <strong>Leones SC</strong></li>
-                <li><strong>Águilas</strong> 0 - 0 <strong>Centauros</strong></li>
-                <li><strong>Pumas</strong> 3 - 2 <strong>Dragones</strong></li>
-            </ul>
+        <div class="dropdown">
+          <button class="dropbtn">Ligas ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Listado de Ligas</a>
+            <a href="#">Calendario de Partidos</a>
+            <a href="#">Detalle de Partido</a>
+            <a href="#">Registro de Resultado</a>
+            <a href="#">Tabla de Posiciones</a>
+          </div>
         </div>
-    </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
-    </footer>
+        <div class="dropdown">
+          <button class="dropbtn">Usuarios ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Dashboard Jugador</a>
+            <a href="#">Dashboard Entrenador</a>
+            <a href="#">Dashboard Administrador</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Registro ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Registro de Jugador</a>
+            <a href="#">Registro de Equipo</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Reportes ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Reporte de Partidos Jugados</a>
+            <a href="#">Reporte de Equipos</a>
+            <a href="#">Estadísticas de Jugadores</a>
+          </div>
+        </div>
+
+        <a href="#">Notificaciones</a>
+
+        <div class="dropdown">
+          <button class="dropbtn login">Login ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Iniciar Sesión</a>
+            <a href="#">Registro</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Gestiona tu <span>pasión deportiva</span></h1>
+      <p>Organiza ligas, equipos y jugadores en una sola plataforma moderna y poderosa.</p>
+      <button class="btn-primary">Ir al Panel</button>
+    </div>
+    <div class="hero-img">
+      <img src="/IMG/Fondo.png" alt="Hero">
+    </div>
+  </section>
+
+  <!-- TARJETAS -->
+  <section class="summary">
+    <div class="card"><h3>Ligas activas</h3><p>8</p></div>
+    <div class="card"><h3>Equipos registrados</h3><p>124</p></div>
+    <div class="card"><h3>Jugadores</h3><p>1,054</p></div>
+    <div class="card"><h3>Partidos programados</h3><p>12</p></div>
+  </section>
+
+  <!-- DATOS -->
+  <main class="data">
+    <div class="data-card">
+      <h2>Próximos partidos</h2>
+      <table>
+        <thead>
+          <tr><th>Fecha</th><th>Equipo A</th><th>Equipo B</th><th>Liga</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>15/10/2025</td><td>Tigres FC</td><td>Leones SC</td><td>Sub-18</td></tr>
+          <tr><td>16/10/2025</td><td>Águilas</td><td>Centauros</td><td>Libre</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="data-card results">
+      <h2>Últimos resultados</h2>
+      <ul>
+        <li><strong>Tigres FC</strong> 2 - 1 <strong>Leones SC</strong></li>
+        <li><strong>Águilas</strong> 0 - 0 <strong>Centauros</strong></li>
+        <li><strong>Pumas</strong> 3 - 2 <strong>Dragones</strong></li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
+  </footer>
 </body>
-
 </html>
