@@ -20,4 +20,10 @@ public class UsuarioController {
     public String verRegistroEquipo() {
         return "RegistroEquipo";
     }
+
+    @GetMapping("/registro-jugador")
+    public String verRegistroJugador() {
+        return "RegistroJugador";
+    }
+
 }
