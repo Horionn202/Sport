@@ -1,4 +1,3 @@
-/* ==== BASE ==== */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +21,6 @@ body {
   color: var(--dark);
 }
 
-/* ==== SIDEBAR ==== */
 .sidebar {
   width: 260px;
   background: var(--dark);
@@ -75,14 +73,12 @@ body {
   font-weight: 600;
 }
 
-/* ==== MAIN ==== */
 .main-content {
   flex: 1;
   padding: 2rem 3rem;
   overflow-y: auto;
 }
 
-/* ==== HEADER ==== */
 .profile-banner {
   display: flex;
   align-items: center;
@@ -121,7 +117,6 @@ body {
   margin-top: 6px;
 }
 
-/* ==== TARJETAS RESUMEN ==== */
 .summary-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -160,7 +155,6 @@ body {
   color: var(--primary);
 }
 
-/* ==== TABLA ==== */
 .card {
   background: white;
   border-radius: var(--radius);
@@ -232,7 +226,6 @@ th, td {
   transform: scale(1.05);
 }
 
-/* ==== REPORTES ==== */
 .activity-list {
   list-style: none;
   font-size: 0.95rem;

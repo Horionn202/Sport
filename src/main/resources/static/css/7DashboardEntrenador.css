@@ -1,4 +1,3 @@
-/* ==== BASE ==== */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +21,6 @@ body {
   color: var(--dark);
 }
 
-/* ==== SIDEBAR ==== */
 .sidebar {
   width: 260px;
   background: var(--dark);
@@ -81,14 +79,12 @@ body {
   font-weight: 600;
 }
 
-/* ==== MAIN ==== */
 .main-content {
   flex: 1;
   padding: 2rem 3rem;
   overflow-y: auto;
 }
 
-/* ==== HEADER ==== */
 .profile-banner {
   display: flex;
   align-items: center;
@@ -133,7 +129,6 @@ body {
   background: #19376d;
 }
 
-/* ==== TARJETAS ==== */
 .card {
   background: white;
   border-radius: var(--radius);
@@ -151,7 +146,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ==== SECCIÓN EQUIPO ==== */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -188,7 +182,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* ==== ENTRENAMIENTOS ==== */
 .training-list {
   list-style: none;
   font-size: 0.95rem;
@@ -203,7 +196,6 @@ body {
   border-bottom: none;
 }
 
-/* ==== ESTADÍSTICAS ==== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

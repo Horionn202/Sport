@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listado de Ligas</title>
+  <link rel="stylesheet" href="/CSS/9ListadoLigas.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo">
+        <span>SPORT CONNECT</span>
+      </div>
+
+      <nav class="menu">
+        <div class="dropdown">
+          <a href="/">Inicio</a>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Ligas ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Calendario de Partidos</a>
+            <a href="#">Detalle de Partido</a>
+            <a href="#">Registro de Resultado</a>
+            <a href="#">Tabla de Posiciones</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Usuarios ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Dashboard Jugador</a>
+            <a href="#">Dashboard Entrenador</a>
+            <a href="#">Dashboard Administrador</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Registro ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Registro de Jugador</a>
+            <a href="#">Registro de Equipo</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Reportes ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Reporte de Partidos Jugados</a>
+            <a href="#">Reporte de Equipos</a>
+            <a href="#">Estadísticas de Jugadores</a>
+          </div>
+        </div>
+
+        <a href="#">Notificaciones</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="listado-ligas">
+    <h1>Listado de Ligas</h1>
+    <div class="tabla-container">
+      <table>
+        <thead>
+          <tr>
+            <th><i data-lucide="trophy"></i> Liga</th>
+            <th><i data-lucide="map-pin"></i> Ubicación</th>
+            <th><i data-lucide="calendar-days"></i> Temporada</th>
+            <th><i data-lucide="users"></i> Equipos</th>
+            <th><i data-lucide="more-horizontal"></i> Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Liga Metropolitana</td>
+            <td>Ciudad de México</td>
+            <td>2025</td>
+            <td>18</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga Juvenil Norte</td>
+            <td>Monterrey</td>
+            <td>2025</td>
+            <td>12</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga del Pacífico</td>
+            <td>Guadalajara</td>
+            <td>2025</td>
+            <td>16</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga Sureste</td>
+            <td>Mérida</td>
+            <td>2025</td>
+            <td>14</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga Universitaria</td>
+            <td>Puebla</td>
+            <td>2025</td>
+            <td>10</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga Infantil Centro</td>
+            <td>Querétaro</td>
+            <td>2025</td>
+            <td>8</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga Femenil Nacional</td>
+            <td>León</td>
+            <td>2025</td>
+            <td>12</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Liga de Campeones</td>
+            <td>Tijuana</td>
+            <td>2025</td>
+            <td>20</td>
+            <td class="acciones">
+              <button class="accion-btn"><i data-lucide="eye"></i></button>
+              <button class="accion-btn"><i data-lucide="edit"></i></button>
+              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 SportConnect. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

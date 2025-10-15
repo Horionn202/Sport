@@ -1,4 +1,3 @@
-/* ==== BASE RESET ==== */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ==== HEADER ==== */
 header {
   position: sticky;
   top: 0;
@@ -69,7 +67,6 @@ header {
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
 }
 
-/* ==== MENU ==== */
 .menu {
   display: flex;
   align-items: center;
@@ -112,7 +109,6 @@ header {
   transform: translateY(-2px);
 }
 
-/* ==== DROPDOWN ==== */
 .dropdown {
   position: relative;
 }
@@ -157,7 +153,6 @@ header {
   padding-left: 1.6rem;
 }
 
-/* ==== LOGIN BUTTON ==== */
 .dropbtn.login {
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   color: white;
@@ -173,7 +168,6 @@ header {
   box-shadow: 0 8px 20px rgba(255, 143, 0, 0.45);
 }
 
-/* ==== HERO ==== */
 .hero {
   display: flex;
   align-items: center;
@@ -225,7 +219,6 @@ header {
   box-shadow: 0 10px 30px rgba(11, 36, 71, 0.35);
 }
 
-/* ==== HERO IMAGE ==== */
 .hero-img img {
   width: 470px;
   border-radius: 20px;
@@ -242,7 +235,6 @@ header {
   }
 }
 
-/* ==== SUMMARY CARDS ==== */
 .summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -278,7 +270,6 @@ header {
   color: var(--primary);
 }
 
-/* ==== DATA ==== */
 .data {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -306,7 +297,6 @@ header {
   color: var(--dark);
 }
 
-/* ==== TABLE ==== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -334,7 +324,6 @@ table th {
   border-bottom: 1px solid #eee;
 }
 
-/* ==== FOOTER ==== */
 footer {
   text-align: center;
   padding: 1.5rem 0;
@@ -344,7 +333,6 @@ footer {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ==== ANIMATIONS ==== */
 @keyframes fadeInUp {
   from {
     opacity: 0;

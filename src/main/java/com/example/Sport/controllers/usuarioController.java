@@ -53,4 +53,10 @@ public class UsuarioController {
     public String verDashboardAdministrador() {
         return "8DashboardAdministrador";
     }
+
+    // Página de listado de ligas
+    @GetMapping("/listado-ligas")
+    public String verListadoLigas() {
+        return "9ListadoLigas";
+    }
 }

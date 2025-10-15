@@ -1,4 +1,3 @@
-/* ==== BASE ==== */
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +25,6 @@ body {
   color: var(--dark);
 }
 
-/* ==== HEADER ==== */
 header {
   position: sticky;
   top: 0;
@@ -71,7 +69,6 @@ header {
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
 }
 
-/* ==== MENÚ ==== */
 .menu {
   display: flex;
   align-items: center;
@@ -120,7 +117,6 @@ header {
   transform: scale(1.08);
 }
 
-/* ==== CONTENEDOR PRINCIPAL ==== */
 .container {
   display: flex;
   justify-content: flex-start; 
@@ -132,7 +128,6 @@ header {
   position: relative;
 }
 
-/* ==== ENVOLTORIO DE IMAGEN ==== */
 .image-wrapper {
   position: relative;
   display: flex;
@@ -140,7 +135,6 @@ header {
   align-items: flex-start;
 }
 
-/* ==== FONDO DEPORTIVO ==== */
 .background {
   display: flex;
   justify-content: flex-start;
@@ -160,7 +154,6 @@ header {
   animation: fadeInUp 1s ease forwards;
 }
 
-/* ==== TARJETA LOGIN ==== */ 
 .login-card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -177,9 +170,6 @@ header {
   animation: fadeInUp 1s ease forwards;
 }
 
-
-
-/* ==== LOGO EN TARJETA ==== */
 .logo {
   display: flex;
   align-items: center;
@@ -231,7 +221,6 @@ input:focus {
   border-color: #0b2447;
 }
 
-/* ==== OPCIONES ==== */
 .options {
   display: flex;
   justify-content: space-between;
@@ -245,7 +234,6 @@ input:focus {
   font-weight: 500;
 }
 
-/* ==== BOTONES ==== */
 .btn-primary {
   background-color: #0b2447;
   color: white;
@@ -276,7 +264,6 @@ input:focus {
   background-color: #e66c00;
 }
 
-/* ==== FOOTER ==== */
 footer {
   position: absolute;
   bottom: 50px;
@@ -302,7 +289,6 @@ footer {
   text-decoration: underline;
 }
 
-/* ==== ANIMACIONES ==== */
 @keyframes fadeInUp {
   from {
     opacity: 0;

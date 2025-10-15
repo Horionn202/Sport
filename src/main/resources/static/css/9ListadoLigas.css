@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+@import url('/CSS/1Inicio.css');
+
+.listado-ligas {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem 8%;
+  background: var(--glass-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.listado-ligas h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.listado-ligas h1::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.tabla-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+thead {
+  background: var(--dark);
+  color: white;
+}
+
+thead th {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: var(--transition);
+}
+
+tbody tr:hover {
+  background: #f9fafc;
+  transform: scale(1.01);
+}
+
+tbody td {
+  padding: 1rem;
+  color: #333;
+}
+
+tbody td i {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: var(--primary);
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.accion-btn {
+  background: var(--primary-light);
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(255, 143, 0, 0.3);
+  transition: var(--transition);
+}
+
+.accion-btn i {
+  color: white;
+  width: 18px;
+  height: 18px;
+}
+
+.accion-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 143, 0, 0.4);
+}
+
+.accion-btn.eliminar {
+  background: #e74c3c;
+}
+
+.accion-btn.eliminar:hover {
+  background: #c0392b;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--dark);
+  }
+}
