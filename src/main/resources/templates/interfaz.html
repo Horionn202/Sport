@@ -1,214 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../static/css/interfaz.css">
-
-    <title>interfaz</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPORT - Interfaz</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../static/css/interfaz.css">
 </head>
 
 <body>
+  <div class="wrapper">
 
-    <div class="wrapper">
+    <!-- Barra lateral -->
+    <aside>
+      <div class="aside-container">
+        <a href="#"><img class="logo" src="../static/img/Aside/home.png" alt=""></a>
+        <a href="#"><img class="logo" src="../static/img/Aside/Player.png" alt=""></a>
+        <a href="#"><img class="logo" src="../static/img/Aside/players.png" alt=""></a>
+        <a href="#"><img class="logo" src="../static/img/Aside/Team.png" style="width:70px;" alt=""></a>
+        <a href="#"><img class="logo" src="../static/img/Aside/copa.png" alt=""></a>
 
-        <aside>
+        <a href="#"><img class="logo" src="../static/img/Aside/settings.png" style="margin-top:7rem;" alt=""></a>
+      </div>
+    </aside>
 
-          <div class="aside-container">
+    <!-- Contenido principal -->
+    <main>
+      <header>
+        <div class="container">
 
-            <a href=""><img class="logo"  src="../static/img/Aside/home.png" alt=""></a>
-            <a href=""> <img  class="logo"src="../static/img/Aside/Player.png" alt=""></a>
-            <a href=""> <img class="logo" src="../static/img//Aside/players.png" alt=""></a>
-            <a href="">  <img class="logo" src="../static/img/Aside/Team.png" style="width: 70px;" alt=""></a>
-            <a href=""> <img  class="logo"src="../static/img/Aside/copa.png" alt=""></a>
+          <form action="">
+            <div class="buscador">
+              <input type="text" name="q" placeholder="Buscar Equipo" class="controlador"> 
+              <span class="icon"><i class="bi bi-search"></i></span>  
+            </div>
+          </form>
 
-            <a href=""><img class="logo" src="../static/img/Aside/settings.png" style="margin-top: 7rem;" alt=""></a>
-
+          <div class="usuario">
+            <div>
+              <h2>Usuario</h2>
+              <p>usuario@gmail.com</p>
+            </div>
+            <button id="theme-toggle" class="theme-btn">
+              <i class="bi bi-brightness-high"></i>
+            </button>
           </div>
+        </div>
+      </header>
 
-        </aside>
+      <h1>Hola, Usuario 👋</h1>
 
-        <main>
-            <header>
+      <!-- Bloques principales -->
+      <div class="contenido">
+        <div class="rectangulo">
+          <div class="text">
+            <h1>Jugadores Actuales</h1>
+            <h2>125</h2>
+            <a href="#">Ver Jugadores</a>
+          </div>
+          <div class="imagen">
+            <img src="../static/img/main/PlayerIcon.png" alt="">
+          </div>
+        </div>
 
-                <div class="container">
+        <div class="rectangulo">
+          <div class="text">
+            <h1>Equipos Registrados</h1>
+            <h2>12</h2>
+            <a href="#">Ver Equipos</a>
+          </div>
+          <div class="imagen">
+            <img src="../static/img/main/team.png" alt="">
+          </div>
+        </div>
 
-                    <form action="">
-                        <div class=" buscador">
-                            <input type="text" name="q" placeholder=" Buscar Equipo" class="controlador"> 
-                            <span class="icon"><i class="bi bi-search" ></i></span>  
-                        </div>
-                    </form>
+        <div class="rectangulo">
+          <div class="text">
+            <h1>Partidos Jugados</h1>
+            <h2>28</h2>
+            <a href="#">Ver Resumen</a>
+          </div>
+          <div class="imagen">
+            <img src="../static/img/main/copa.png" alt="">
+          </div>
+        </div>                
+      </div>
 
-
-                    <div class="usuario">
-
-                        <div>
-                            <h2>Usuario</h2>
-                            <p>Usuario@gmail.com</p>
-                        </div>
-
-                        <div>
-                            <img class="logo" src="../static/img/header/UserIcon.webp" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <h1>Hola, Usuario</h1>
-
-            <div class="contenido">
-
-                <div class="rectangulo">
-                    <div class="text">
-                        <h1>Jugadores Actuales</h1>
-                        <h2>125</h2>
-
-                        <a href="">ver Jugadores</a>
-                    </div>
-
-                    <div class="imagen">
-                        <img  src="../static/img/main/PlayerIcon.png" alt="">
-                    </div>
-                </div>
-
-                <div class="rectangulo">
-                    <div class="text">
-                        <h1>Equipos Registrados</h1>
-                        <h2>12</h2>
-
-                        <a href="">ver Equipos</a>
-                    </div>
-
-                    <div class="imagen">
-                        <img  src="../static/img/main/team.png" alt="">
-                    </div>
-                </div>
-
-                <div class="rectangulo">
-                    <div class="text">
-                        <h1>Partidos Jugados</h1>
-                        <h2>28</h2>
-
-                        <a href="">ver Resumen</a>
-                    </div>
-
-                    <div class="imagen">
-                        <img  src="../static/img/main/copa.png" alt="">
-                    </div>
-                </div>                
+      <!-- Sección de partidos y calendario -->
+      <div class="contenido2">
+        <div class="partidos">
+          <h2>Próximos Partidos</h2>
+          <div class="partidos-container">
+            <div>
+              <h2>Fecha</h2>
+              <h3>8/18/25</h3>
+              <h3>8/19/25</h3>
+              <h3>8/20/25</h3>
             </div>
-
-
-           <div class="contenido2">
-             <div class="partidos">
-
-                <h2>Proximos Partidos</h2>
-
-                <div class="partidos-container">
-                    <div>
-                        <h2>Fecha</h2>
-                        <h3>8/18/25</h3>
-                        <h3>8/18/25</h3>
-                        <h3>8/18/25</h3>
-                        <h3>8/18/25</h3>
-                        <h3>8/18/25</h3>
-                        <h3>8/18/25</h3>                        
-                    </div>
-
-                    <div>
-                        <h2>Hora</h2>
-                        <h3>17:00</h3>
-                        <h3>17:00</h3>
-                        <h3>17:00</h3>
-                        <h3>17:00</h3>
-                        <h3>17:00</h3>
-                        <h3>17:00</h3>     
-                        <h3>17:00</h3>                    
-                    </div>
-
-                    <div>
-                        <h2>Partido</h2>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        <h3>Equipo1 vs Equipo2</h3>
-                        
-                    </div>
-
-                    <div>
-                        <h2>Lugar</h2>
-                        <h3>Polideportivo Montjoy</h3>
-                        <h3>Polideportivo Montjoy</h3>
-                        <h3>Polideportivo Montjoy</h3>
-                        <h3>Polideportivo Montjoy</h3>
-                        <h3>Polideportivo Montjoy</h3>
-                        <h3>Polideportivo Montjoy</h3>
-                         <h3>Polideportivo Montjoy</h3>
-                    </div>
-
-                    <img class="imagen" src="../static/img/main/partidosbg.png" alt="">
-
-                </div>
-                <a href="" style="color: gray; font-size: 0.9rem; margin-left: 2rem; margin-bottom: 1rem;">Ver Calendario</a>
+            <div>
+              <h2>Hora</h2>
+              <h3>17:00</h3>
+              <h3>18:30</h3>
+              <h3>19:00</h3>
             </div>
-
-            <div class="calendario">
-
-                <h2>Calendario</h2>
-
-                    <div class="header">
-                        <input type="month" id="selectorMes">
-                        <a href="#" style="color:#1e90ff; font-size:12px;">Ver</a>
-                    </div>
-
-                    <table id="tablaCalendario">
-                        <thead>
-                        <tr>
-                            <th>Do</th><th>L</th><th>M</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sa</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-
+            <div>
+              <h2>Partido</h2>
+              <h3>Equipo1 vs Equipo2</h3>
+              <h3>Equipo3 vs Equipo4</h3>
+              <h3>Equipo5 vs Equipo6</h3>
             </div>
-
-        
-
-
+            <div>
+              <h2>Lugar</h2>
+              <h3>Estadio Central</h3>
+              <h3>Polideportivo Montjoy</h3>
+              <h3>Villa Deportiva</h3>
             </div>
+          </div>
+          <a href="#" class="ver-calendario">Ver Calendario</a>
+        </div>
 
+        <div class="calendario">
+          <h2>Calendario</h2>
+          <div class="header">
+            <input type="month" id="selectorMes">
+            <a href="#" class="ver">Ver</a>
+          </div>
+          <table id="tablaCalendario">
+            <thead>
+              <tr><th>Do</th><th>L</th><th>M</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sa</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
 
-            <div class="contenido3">
+      <!-- Clima y trofeos -->
+      <div class="contenido3">
+        <div class="clima">
+          <img src="../static/img/main/Clima.png" alt="">
+          <div>
+            <h2>16°</h2>
+            <h3>Nublado</h3>
+            <h4>23° / 16°</h4>
+          </div>
+        </div>
 
-                <div class="clima">
-                    <img src="../static/img/main/Clima.png" alt="">
-                    <h2>16°</h2>
-                    <h2>Nublado</h2>
-                    <h2>23°/16°</h2>
-                </div>
+        <div class="trofeos">
+          <h2>Equipos con Trofeos</h2>
+          <h3>6</h3>
+          <a href="#">Ver Equipos</a>
+        </div>  
+      </div>
+    </main>
+  </div>
 
-            <div class="trofeos">
-                <h2>Equipos Con Trofeos</h2>
-                <h2>6</h2>
-                <a href="">Ver Equipos</a>
-               
-            </div>  
-        </main>
+  <script src="../static/js/interfaz/calendario.js"></script>
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = toggle.querySelector('i');
 
-
-    </div>
-
-   
-    <script src="../static/js/interfaz/calendario.js"></script>
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      icon.classList.toggle('bi-moon');
+      icon.classList.toggle('bi-brightness-high');
+    });
+  </script>
 </body>
 </html>
