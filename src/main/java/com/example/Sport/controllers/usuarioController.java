@@ -6,28 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UsuarioController {
 
+    // Página de inicio
     @GetMapping("/")
-    public String verDashboard() {
-        return "DasboardPrincipal";
+    public String verPaginaDeInicio() {
+        return "1Inicio";
     }
 
-    @GetMapping("/login")
+    // Página de iniciar sesión
+    @GetMapping("/iniciar-sesion")
     public String verLogin() {
-        return "IniciarSeccion";
+        return "2IniciarSesion";
     }
 
-    @GetMapping("/registro-equipo")
-    public String verRegistroEquipo() {
-        return "RegistroEquipo";
-    }
-
-    @GetMapping("/registro-jugador")
-    public String verRegistroJugador() {
-        return "RegistroJugador";
-    }
-
-    @GetMapping("/dashboard-jugador")
-    public String verDashboardJugador() {
-        return "DashboardJugador";
+    // Página de registro
+    @GetMapping("/registro")
+    public String verRegistro() {
+        return "3Registro";
     }
 }
