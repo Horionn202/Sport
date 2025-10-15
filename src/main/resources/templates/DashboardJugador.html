@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Dashboard Jugador</title>
+  <link rel="stylesheet" href="/css/DashboardJugador.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/img/Logo.svg" alt="Logo Sport Connect">
+        <span>SPORT CONNECT</span>
+      </div>
+      <nav class="menu">
+        <a href="#">Mi Perfil</a>
+        <a href="#">Mi Equipo</a>
+        <a href="#">Partidos</a>
+        <a href="#">Estadísticas</a>
+        <a href="/" class="btn-login">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PERFIL JUGADOR -->
+  <section class="perfil">
+    <div class="perfil-info">
+      <img src="/img/PaoloGuerrero.jpeg" alt="Foto jugador" class="foto-jugador">
+      <div class="perfil-texto">
+        <h1>Hola, <span>Paolo Guerrero</span> 👋</h1>
+        <p>Delantero - Alianza Lima | Liga Sub-41</p>
+        <button class="btn-primary">Editar Perfil</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="summary">
+    <div class="card">
+      <h3>Goles</h3>
+      <p>12</p>
+    </div>
+    <div class="card">
+      <h3>Asistencias</h3>
+      <p>8</p>
+    </div>
+    <div class="card">
+      <h3>Partidos Jugados</h3>
+      <p>18</p>
+    </div>
+    <div class="card">
+      <h3>Tarjetas Amarillas</h3>
+      <p>3</p>
+    </div>
+  </section>
+
+  <!-- DATOS DEL JUGADOR -->
+  <main class="data">
+    <div class="data-card">
+      <h2>Próximos partidos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Rival</th>
+            <th>Liga</th>
+            <th>Ubicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20/10/2025</td>
+            <td>Leones SC</td>
+            <td>Sub-18</td>
+            <td>Estadio Central</td>
+          </tr>
+          <tr>
+            <td>28/10/2025</td>
+            <td>Pumas FC</td>
+            <td>Sub-18</td>
+            <td>Campo Norte</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="data-card results">
+      <h2>Último rendimiento</h2>
+      <ul>
+        <li><strong>vs Centauros</strong> — Gol (1), Asist. (1)</li>
+        <li><strong>vs Águilas</strong> — Gol (2), MVP 🏆</li>
+        <li><strong>vs Dragones</strong> — Sin goles</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- LOGROS -->
+  <section class="achievements">
+    <h2>🏅 Logros recientes</h2>
+    <div class="logros-container">
+      <div class="logro">
+        <img src="/img/medalla1.svg" alt="Máximo goleador">
+        <p>Máximo goleador - Torneo Apertura 2025</p>
+      </div>
+      <div class="logro">
+        <img src="/img/medalla2.svg" alt="Jugador destacado">
+        <p>Jugador destacado - Abril 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

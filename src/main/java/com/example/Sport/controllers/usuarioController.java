@@ -26,4 +26,8 @@ public class UsuarioController {
         return "RegistroJugador";
     }
 
+    @GetMapping("/dashboard-jugador")
+    public String verDashboardJugador() {
+        return "DashboardJugador";
+    }
 }
