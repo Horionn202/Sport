@@ -23,4 +23,16 @@ public class UsuarioController {
     public String verRegistro() {
         return "3Registro";
     }
+
+    // Página de registro jugador
+    @GetMapping("/registro-jugador")
+    public String verRegistroJugador() {
+        return "4RegistroJugador";
+    }
+
+    // Página de registro jugador
+    @GetMapping("/registro-equipo")
+    public String verRegistroEquipo() {
+        return "5RegistroEquipo";
+    }
 }

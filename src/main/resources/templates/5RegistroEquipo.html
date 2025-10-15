@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Registro Equipo</title>
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="/CSS/5RegistroEquipo.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <span>SPORT CONNECT</span>
+      </div>
+
+      <nav class="menu">
+        <a href="/">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+    <div class="background">
+      <img src="/IMG/Fondo.png" alt="Fondo deportivo equipo" />
+    </div>
+
+    <section class="login-card">
+      <div class="logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <h1>SPORT CONNECT</h1>
+      </div>
+
+      <h2>Registro de Equipo</h2>
+
+      <form action="#" method="POST">
+        <label for="teamname">Nombre del equipo</label>
+        <input type="text" id="teamname" name="teamname" placeholder="Ejemplo: Los Halcones FC" required />
+
+        <label for="sport">Deporte</label>
+        <select id="sport" name="sport" required>
+          <option value="" selected disabled>Selecciona el deporte del equipo</option>
+          <option value="futbol">Fútbol</option>
+          <option value="baloncesto">Baloncesto</option>
+          <option value="voleibol">Voleibol</option>
+          <option value="tenis">Tenis</option>
+          <option value="atletismo">Atletismo</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="city">Ciudad o localidad</label>
+        <input type="text" id="city" name="city" placeholder="Ejemplo: Madrid, Buenos Aires..." required />
+
+        <label for="foundation">Año de fundación</label>
+        <input type="number" id="foundation" name="foundation" min="1800" max="2025" placeholder="Ejemplo: 2015" />
+
+        <label for="coach">Nombre del entrenador</label>
+        <input type="text" id="coach" name="coach" placeholder="Nombre del entrenador principal" required />
+
+        <label for="email">Correo del equipo</label>
+        <input type="email" id="email" name="email" placeholder="Ejemplo: contacto@equipo.com" required />
+
+        <label for="password">Contraseña de acceso</label>
+        <input type="password" id="password" name="password" placeholder="Crea una contraseña segura" required />
+
+        <label for="confirm-password">Confirmar contraseña</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Repite la contraseña" required />
+
+        <label for="members">Cantidad de jugadores (opcional)</label>
+        <input type="number" id="members" name="members" min="1" max="100" placeholder="Ejemplo: 12" />
+
+        <label for="description">Descripción del equipo (opcional)</label>
+        <textarea id="description" name="description" rows="3" placeholder="Cuéntanos un poco sobre tu equipo"></textarea>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" required /> Acepto los términos y condiciones
+          </label>
+        </div>
+
+        <button class="btn-primary" type="submit">Registrar equipo</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Términos de Servicio</a>
+    </div>
+  </footer>
+</body>
+</html>
