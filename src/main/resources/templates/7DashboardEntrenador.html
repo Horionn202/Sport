@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Dashboard Entrenador</title>
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="/CSS/7DashboardEntrenador.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICONOS LUCIDE -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+      <h2>SPORT CONNECT</h2>
+    </div>
+
+    <nav class="sidebar-menu">
+      <a href="/"><i data-lucide="home"></i> Inicio</a>
+      <a href="#"><i data-lucide="users"></i> Jugadores</a>
+      <a href="#"><i data-lucide="calendar"></i> Entrenamientos</a>
+      <a href="#"><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+      <a href="#"><i data-lucide="clipboard-list"></i> Estrategias</a>
+    </nav>
+
+    <div class="logout">
+      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <div class="profile-banner">
+        <img src="/IMG/avatarEntrenador.png" alt="Avatar Entrenador" class="avatar-large" />
+        <div class="profile-info">
+          <h1 id="coach-name">Carlos Ramírez</h1>
+          <p>Entrenador Principal - Los Halcones FC</p>
+          <span class="tag">Fútbol</span>
+          <span class="tag secondary">5 años de experiencia</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECCIÓN EQUIPO -->
+    <section class="team-section">
+      <div class="card">
+        <h2><i data-lucide="users"></i> Mi Equipo</h2>
+        <div class="team-grid">
+          <div class="player-card">
+            <img src="/IMG/jugador1.png" alt="Jugador 1" />
+            <h3>Juan Pérez</h3>
+            <p>Delantero</p>
+          </div>
+          <div class="player-card">
+            <img src="/IMG/jugador2.png" alt="Jugador 2" />
+            <h3>Andrés Torres</h3>
+            <p>Defensa</p>
+          </div>
+          <div class="player-card">
+            <img src="/IMG/jugador3.png" alt="Jugador 3" />
+            <h3>Pedro López</h3>
+            <p>Mediocampista</p>
+          </div>
+          <div class="player-card">
+            <img src="/IMG/jugador4.png" alt="Jugador 4" />
+            <h3>Roberto Díaz</h3>
+            <p>Portero</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ENTRENAMIENTOS -->
+    <section class="training-section">
+      <div class="card">
+        <h2><i data-lucide="calendar"></i> Próximos Entrenamientos</h2>
+        <ul class="training-list">
+          <li>Lunes 14:00 — Preparación física</li>
+          <li>Miércoles 16:00 — Tácticas ofensivas</li>
+          <li>Viernes 10:00 — Defensa y portería</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ESTADÍSTICAS -->
+    <section class="stats-section">
+      <div class="card stats-card">
+        <h2><i data-lucide="bar-chart-3"></i> Rendimiento del Equipo</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <i data-lucide="trophy"></i>
+            <h3>Victorias</h3>
+            <p>18</p>
+          </div>
+          <div class="stat-item">
+            <i data-lucide="x-circle"></i>
+            <h3>Derrotas</h3>
+            <p>4</p>
+          </div>
+          <div class="stat-item">
+            <i data-lucide="target"></i>
+            <h3>Promedio Goles</h3>
+            <p>2.3</p>
+          </div>
+          <div class="stat-item">
+            <i data-lucide="activity"></i>
+            <h3>Rendimiento</h3>
+            <p>92%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

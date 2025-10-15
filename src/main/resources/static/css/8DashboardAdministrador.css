@@ -1,0 +1,268 @@
+/* ==== BASE ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #ff8f00;
+  --dark: #0b2447;
+  --light: #f9fafc;
+  --radius: 16px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --gray: #666;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f7, #e5ebf3);
+  color: var(--dark);
+}
+
+/* ==== SIDEBAR ==== */
+.sidebar {
+  width: 260px;
+  background: var(--dark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.2rem;
+}
+
+.sidebar-logo {
+  text-align: center;
+}
+
+.sidebar-logo img {
+  width: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-menu {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  transition: 0.3s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: var(--primary);
+  transform: translateX(5px);
+}
+
+.logout a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffb94d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ==== MAIN ==== */
+.main-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+/* ==== HEADER ==== */
+.profile-banner {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.avatar-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+}
+
+.profile-info h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profile-info p {
+  color: var(--gray);
+}
+
+.tag {
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* ==== TARJETAS RESUMEN ==== */
+.summary-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+  background: #fff5e0;
+}
+
+.summary-card i {
+  width: 30px;
+  height: 30px;
+  color: var(--primary);
+}
+
+.summary-card h3 {
+  margin: 0.5rem 0;
+  color: var(--dark);
+}
+
+.summary-card p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ==== TABLA ==== */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+thead {
+  background: var(--dark);
+  color: white;
+}
+
+th, td {
+  padding: 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.status.active {
+  background: #28a745;
+}
+
+.status.inactive {
+  background: #dc3545;
+}
+
+.btn-small {
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  margin-right: 0.3rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.btn-small.edit {
+  background: #0b2447;
+}
+
+.btn-small.delete {
+  background: #c0392b;
+}
+
+.btn-small:hover {
+  transform: scale(1.05);
+}
+
+/* ==== REPORTES ==== */
+.activity-list {
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--gray);
+}
+
+.activity-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.activity-list li strong {
+  color: var(--dark);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .summary-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+}

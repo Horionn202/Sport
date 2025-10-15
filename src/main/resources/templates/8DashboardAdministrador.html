@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - Dashboard Administrador</title>
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="/CSS/8DashboardAdministrador.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICONOS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+      <h2>SPORT CONNECT</h2>
+    </div>
+
+    <nav class="sidebar-menu">
+      <a href="/"><i data-lucide="home"></i>Inicio</a>
+      <a href="#"><i data-lucide="users"></i> Usuarios</a>
+      <a href="#"><i data-lucide="shield"></i> Equipos</a>
+      <a href="#"><i data-lucide="user-check"></i> Entrenadores</a>
+      <a href="#"><i data-lucide="user"></i> Jugadores</a>
+      <a href="#"><i data-lucide="bar-chart"></i> Reportes</a>
+      <a href="#"><i data-lucide="settings"></i> Configuración</a>
+    </nav>
+
+    <div class="logout">
+      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <div class="profile-banner">
+        <img src="/IMG/avatarAdmin.png" alt="Avatar Admin" class="avatar-large" />
+        <div class="profile-info">
+          <h1>Administrador General</h1>
+          <p>Gestión de Sport Connect</p>
+          <span class="tag">Modo Administrador</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECCIÓN RESUMEN -->
+    <section class="summary-section">
+      <div class="summary-card">
+        <i data-lucide="users"></i>
+        <h3>Usuarios Totales</h3>
+        <p>1,256</p>
+      </div>
+      <div class="summary-card">
+        <i data-lucide="user-check"></i>
+        <h3>Entrenadores</h3>
+        <p>134</p>
+      </div>
+      <div class="summary-card">
+        <i data-lucide="user"></i>
+        <h3>Jugadores</h3>
+        <p>987</p>
+      </div>
+      <div class="summary-card">
+        <i data-lucide="shield"></i>
+        <h3>Equipos</h3>
+        <p>52</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN TABLA DE USUARIOS -->
+    <section class="table-section">
+      <div class="card">
+        <h2><i data-lucide="users"></i> Gestión de Usuarios</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Email</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#001</td>
+              <td>Juan Pérez</td>
+              <td>Jugador</td>
+              <td>juanperez@email.com</td>
+              <td><span class="status active">Activo</span></td>
+              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
+            </tr>
+            <tr>
+              <td>#002</td>
+              <td>Carlos Ramírez</td>
+              <td>Entrenador</td>
+              <td>carlosr@email.com</td>
+              <td><span class="status inactive">Suspendido</span></td>
+              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
+            </tr>
+            <tr>
+              <td>#003</td>
+              <td>Lucía Gómez</td>
+              <td>Jugador</td>
+              <td>luciagomez@email.com</td>
+              <td><span class="status active">Activo</span></td>
+              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN REPORTES -->
+    <section class="reports-section">
+      <div class="card">
+        <h2><i data-lucide="bar-chart-3"></i> Actividad del Sistema</h2>
+        <ul class="activity-list">
+          <li>Nuevo jugador registrado — <strong>Juan Pérez</strong></li>
+          <li>Equipo <strong>Los Halcones</strong> actualizado</li>
+          <li>Usuario <strong>Carlos Ramírez</strong> suspendido</li>
+          <li>Se generó reporte semanal de actividad</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

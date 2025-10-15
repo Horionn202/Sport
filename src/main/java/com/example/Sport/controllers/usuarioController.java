@@ -35,4 +35,22 @@ public class UsuarioController {
     public String verRegistroEquipo() {
         return "5RegistroEquipo";
     }
+
+    // Página de dashboard jugador
+    @GetMapping("/dashboard-jugador")
+    public String verDashboardJugador() {
+        return "6DashboardJugador";
+    }
+    
+    // Página de dashboard entrenador
+    @GetMapping("/dashboard-entrenador")
+    public String verDashboardEntrenador() {
+        return "7DashboardEntrenador";
+    }
+
+    // Página de dashboard administrador
+    @GetMapping("/dashboard-administrador")
+    public String verDashboardAdministrador() {
+        return "8DashboardAdministrador";
+    }
 }
