@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/11Estadistica.css">
+    <title>Document</title>
+</head>
+<body>
+     <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+      <h2>SPORT CONNECT</h2>
+    </div>
+
+    <nav class="sidebar-menu">
+      <a href="/"><i data-lucide="home"></i> Inicio</a>
+      <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+      <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
+      <a href="#"><i data-lucide="users-2"></i> Equipos</a>
+      <a href="#"><i data-lucide="settings"></i> Configuración</a>
+    </nav>
+
+    <div class="logout">
+      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+    </div>
+  </aside>
+
+
+<main class="estadisticas-jugador">
+  <section class="header-jugador">
+    <div class="jugador-info">
+      <img src="img/jugador.jpg" alt="Jugador" class="foto-jugador">
+      <div class="datos-jugador">
+        <h1>Rafael Torres</h1>
+        <p>Delantero | FC Lima United</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="estadisticas-resumen">
+    <div class="card">
+      <h3>Goles</h3>
+      <p>24</p>
+    </div>
+    <div class="card">
+      <h3>Asistencias</h3>
+      <p>11</p>
+    </div>
+    <div class="card">
+      <h3>Partidos</h3>
+      <p>32</p>
+    </div>
+    <div class="card">
+      <h3>Minutos</h3>
+      <p>2,560</p>
+    </div>
+  </section>
+
+  <section class="rendimiento-grafico">
+    <h2>Rendimiento del Jugador</h2>
+    <div class="grafico-contenedor">
+      <canvas id="graficoRendimiento"></canvas>
+    </div>
+  </section>
+
+  <section class="ultimos-partidos">
+    <h2>Últimos Partidos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Rival</th>
+          <th>Resultado</th>
+          <th>Goles</th>
+          <th>Asistencias</th>
+          <th>Minutos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>10 Oct 2025</td><td>Equipo1</td><td>3 - 1</td><td>1</td><td>1</td><td>89'</td></tr>
+        <tr><td>05 Oct 2025</td><td>Equipo2</td><td>2 - 0</td><td>2</td><td>0</td><td>90'</td></tr>
+        <tr><td>29 Sep 2025</td><td>Equipo3</td><td>1 - 2</td><td>0</td><td>0</td><td>85'</td></tr>
+        <tr><td>25 Sep 2025</td><td>Eqiupo4</td><td>4 - 3</td><td>1</td><td>2</td><td>88'</td></tr>
+        <tr><td>20 Sep 2025</td><td>Equipo5</td><td>3 - 2</td><td>2</td><td>0</td><td>90'</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('graficoRendimiento').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Sep 20', 'Sep 25', 'Sep 29', 'Oct 05', 'Oct 10', 'Oct 16'],
+        datasets: [
+          {
+            label: 'Goles',
+            data: [2, 1, 0, 2, 1, 2],
+            borderColor: '#00b85c',
+            backgroundColor: 'rgba(0, 184, 92, 0.15)',
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 4,
+            fill: true,
+          },
+          {
+            label: 'Asistencias',
+            data: [0, 2, 0, 0, 1, 1],
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.1)',
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 4,
+            fill: true,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: { color: '#444' },
+            grid: { color: '#eee' }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#444', stepSize: 1 },
+            grid: { color: '#eee' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { color: '#222', font: { size: 13 } }
+          }
+        }
+      }
+    });
+  </script>
+</main>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/13Configuracion.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <h2>SPORT CONNECT</h2>
+        </div>
+
+        <nav class="sidebar-menu">
+        <a href="/"><i data-lucide="home"></i> Inicio</a>
+        <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+        <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
+        <a href="#"><i data-lucide="users-2"></i> Equipos</a>
+        <a href="#"><i data-lucide="settings"></i> Configuración</a>
+        </nav>
+
+        <div class="logout">
+        <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <main class="config-main">
+    <header class="config-header">
+        <h1>Configuración</h1>
+        <p>Administra tu cuenta, preferencias y ajustes del sistema.</p>
+    </header>
+
+    <section class="config-section perfil">
+        <h2>Perfil del Usuario</h2>
+        <form class="perfil-form">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" placeholder="Ingresa tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" placeholder="usuario@correo.com">
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="btn-guardar">Guardar cambios</button>
+        </form>
+    </section>
+
+    <section class="config-section preferencias">
+        <h2>Preferencias</h2>
+        <div class="preferencias-opciones">
+            <div class="opcion">
+                <label>
+                    <input type="checkbox" checked>
+                    Notificaciones por correo
+                </label>
+            </div>
+            <div class="opcion">
+                <label>
+                    <input type="checkbox">
+                    Modo oscuro
+                </label>
+            </div>
+            <div class="opcion">
+                <label>
+                    <input type="checkbox">
+                    Recordar sesión
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <section class="config-section sistema">
+        <h2>Configuración del Sistema</h2>
+        <div class="sistema-controles">
+            <button class="btn-sistema reiniciar">Reiniciar datos</button>
+            <button class="btn-sistema eliminar">Eliminar cuenta</button>
+        </div>
+    </section>
+</main>
+
+    
+</body>
+</html>

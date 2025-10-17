@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+@import url('/CSS/1Inicio.css');
+@import url('/CSS/6DashboardJugador.css');
+
+.estadisticas-jugador {
+    width: 100%;
+  padding: 2rem;
+  background: #fff;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- Info del jugador --- */
+.header-jugador {
+  margin-bottom: 2rem;
+}
+
+.jugador-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.foto-jugador {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #00b85c;
+  object-fit: cover;
+}
+
+.datos-jugador h1 {
+  margin: 0;
+  color: #00b85c;
+  font-size: 1.8rem;
+}
+
+.datos-jugador p {
+  color: #555;
+}
+
+/* --- Tarjetas resumen --- */
+.estadisticas-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #00b85c;
+  margin-bottom: 0.4rem;
+}
+
+.card p {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* --- Gráfico --- */
+.rendimiento-grafico {
+  margin-bottom: 3rem;
+}
+
+.rendimiento-grafico h2 {
+  color: #00b85c;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.grafico-contenedor {
+  width: 100%;
+  height: 350px;
+  background: #f9f9f9;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* --- Tabla de últimos partidos --- */
+.ultimos-partidos {
+  background: #f9f9f9;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ultimos-partidos h2 {
+  color: #00b85c;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ultimos-partidos table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ultimos-partidos th,
+.ultimos-partidos td {
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.ultimos-partidos th {
+  background: #00b85c;
+  color: #fff;
+}
+
+.ultimos-partidos tr:hover {
+  background: #e8ffe8;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .grafico-contenedor {
+    height: 280px;
+  }
+}

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+
+@import url('/CSS/6DashboardJugador.css');
+
+/* ===== MAIN GENERAL ===== */
+.equipos-main {
+    width: 100%;
+    padding: 2rem;
+    background-color: #fff;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+/* ===== ENCABEZADO ===== */
+.equipos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.equipos-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.btn-nuevo {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nuevo:hover {
+    background-color: #0056b3;
+}
+
+/* ===== SECCIONES ===== */
+.equipos-destacados,
+.todos-equipos {
+    margin-bottom: 3rem;
+}
+
+.equipos-destacados h2,
+.todos-equipos h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* ===== GRID ===== */
+.equipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* ===== TARJETAS ===== */
+.equipo-card {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.equipo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.equipo-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #007BFF;
+}
+
+.equipo-card p {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.categoria {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: #007bff20;
+    color: #007BFF;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+}

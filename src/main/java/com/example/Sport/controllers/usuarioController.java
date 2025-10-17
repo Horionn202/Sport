@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UsuarioController {
+public class usuarioController {
 
     // Página de inicio
     @GetMapping("/")
@@ -58,5 +58,39 @@ public class UsuarioController {
     @GetMapping("/listado-ligas")
     public String verListadoLigas() {
         return "9ListadoLigas";
+    }
+
+    // Pagina Calendario
+    @GetMapping("/calendario")
+    public String verCalendario(){
+        return "10Calendario";
+    }
+    
+    // Pagina Estadistica Jugador
+    @GetMapping("/estadistica")
+    public String verEstadisticaJugador(){
+        return "11EstadisticaJugador";
+    }
+
+    // Pagina Equipos
+
+    @GetMapping("/Equipos")
+    public String verEquipos(){
+        return "12Equipos";
+    }
+
+
+    // Pagina de configuracion
+
+    @GetMapping("/configuracion")
+    public String verConfiguracion(){
+        return "13Configuracion";
+    }
+
+    // Pagina de Entrenamiento
+
+    @GetMapping("entrenamiento")
+    public String verEntrenamiento(){
+        return "14Entrenamientos";
     }
 }

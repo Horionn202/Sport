@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap');
+
+@import url('/CSS/6DashboardJugador.css');
+
+/* ===== GENERAL ===== */
+.entrenamientos-main {
+    width: 100%;
+    padding: 2rem;
+    background-color: #fff;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+/* ===== ENCABEZADO ===== */
+.entrenamientos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.entrenamientos-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.btn-nuevo {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nuevo:hover {
+    background-color: #0056b3;
+}
+
+/* ===== SECCIÓN PRÓXIMOS ===== */
+.proximos-entrenamientos {
+    margin-bottom: 3rem;
+}
+
+.proximos-entrenamientos h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.entrenamientos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ===== TARJETAS ===== */
+.entrenamiento-card {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.entrenamiento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.entrenamiento-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: #007BFF;
+}
+
+.entrenamiento-info p {
+    margin: 0.2rem 0;
+    color: #555;
+}
+
+/* ===== ETIQUETAS ===== */
+.etiqueta {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.tipo-fuerza {
+    background-color: #28a745;
+}
+
+.tipo-tecnica {
+    background-color: #ffc107;
+    color: #222;
+}
+
+.tipo-velocidad {
+    background-color: #17a2b8;
+}
+
+/* ===== HISTORIAL ===== */
+.historial-entrenamientos h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.tabla-entrenamientos {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tabla-entrenamientos th,
+.tabla-entrenamientos td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabla-entrenamientos th {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: 600;
+}
+
+.tabla-entrenamientos tr:hover td {
+    background-color: #f5f7ff;
+}
+
+.estado {
+    padding: 0.3rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.estado.completado {
+    background-color: #28a74520;
+    color: #28a745;
+}
+
+.estado.pendiente {
+    background-color: #ffc10730;
+    color: #b8860b;
+}

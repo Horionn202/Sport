@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/10Calendario.css">
+   
+    <title>Calendario</title>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo">
+        <span>SPORT CONNECT</span>
+      </div>
+
+      <nav class="menu">
+        <div class="dropdown">
+          <a href="/">Inicio</a>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Ligas ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Calendario de Partidos</a>
+            <a href="#">Detalle de Partido</a>
+            <a href="#">Registro de Resultado</a>
+            <a href="#">Tabla de Posiciones</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Usuarios ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Dashboard Jugador</a>
+            <a href="#">Dashboard Entrenador</a>
+            <a href="#">Dashboard Administrador</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Registro ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Registro de Jugador</a>
+            <a href="#">Registro de Equipo</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Reportes ▾</button>
+          <div class="dropdown-content">
+            <a href="#">Reporte de Partidos Jugados</a>
+            <a href="#">Reporte de Equipos</a>
+            <a href="#">Estadísticas de Jugadores</a>
+          </div>
+        </div>
+
+        <a href="#">Notificaciones</a>
+      </nav>
+    </div>
+  </header>
+
+
+<main class="calendario-deportivo">
+
+  <section class="titulo-calendario">
+    <h1>Calendario Deportivo</h1>
+    <p>Consulta próximos partidos, resultados y el día actual</p>
+  </section>
+
+  <section class="contenido-calendario">
+    <!-- Calendario grande -->
+    <div class="calendario-grande">
+      <h2>Próximos Partidos</h2>
+
+      <div class="partido">
+        <span class="fecha">16 Oct 2025</span>
+        <div class="equipos">
+          <span>Equipo1</span> <strong>vs</strong> <span>Equipo5</span>
+        </div>
+        <span class="hora">21:00 - Camp Nou</span>
+      </div>
+
+      <div class="partido">
+        <span class="fecha">17 Oct 2025</span>
+        <div class="equipos">
+          <span>Equipo6</span> <strong>vs</strong> <span>Equipo9</span>
+        </div>
+        <span class="hora">19:30 - Parc des Princes</span>
+      </div>
+
+      <div class="partido">
+        <span class="fecha">18 Oct 2025</span>
+        <div class="equipos">
+          <span>Equipo1</span> <strong>vs</strong> <span>Equipo4</span>
+        </div>
+        <span class="hora">20:00 - Bernabéu</span>
+      </div>
+    </div>
+
+    <!-- Calendario pequeño -->
+    <div class="calendario-pequeno">
+      <h2>Calendario</h2>
+      <div id="mini-calendario"></div>
+    </div>
+  </section>
+
+  <section class="resultados">
+    <h2>Resultados Recientes</h2>
+
+    <div class="resultado">
+      <span>Equipo1</span> <strong>2 - 1</strong> <span>Equipo2</span>
+    </div>
+
+    <div class="resultado">
+      <span>Equipo5</span> <strong>3 - 0</strong> <span>Equipo3</span>
+    </div>
+
+    <div class="resultado">
+      <span>Equipo7</span> <strong>1 - 1</strong> <span>Equipo2</span>
+    </div>
+  </section>
+
+  <script src="../js/interfaz/calendario.js"></script>
+</main>
+
+
+
+</body>
+
+
+    
+</body>
+</html>

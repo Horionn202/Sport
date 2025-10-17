@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/14Entrenamiento.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <h2>SPORT CONNECT</h2>
+        </div>
+
+        <nav class="sidebar-menu">
+        <a href="/"><i data-lucide="home"></i> Inicio</a>
+        <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+        <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
+        <a href="#"><i data-lucide="users-2"></i> Equipos</a>
+        <a href="#"><i data-lucide="settings"></i> Configuración</a>
+        </nav>
+
+        <div class="logout">
+        <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+        </div>
+    </aside>
+    
+    <main class="entrenamientos-main">
+    <header class="entrenamientos-header">
+        <h1>Entrenamientos</h1> 
+    </header>
+
+    <section class="proximos-entrenamientos">
+        <h2>Próximos Entrenamientos</h2>
+        <div class="entrenamientos-grid">
+            <div class="entrenamiento-card">
+                <div class="entrenamiento-info">
+                    <h3>Fuerza y Resistencia</h3>
+                    <p>Entrenador: Carlos Díaz</p>
+                    <p>Fecha: 20/10/2025</p>
+                </div>
+                <span class="etiqueta tipo-fuerza">Fuerza</span>
+            </div>
+
+            <div class="entrenamiento-card">
+                <div class="entrenamiento-info">
+                    <h3>Técnica de Pases</h3>
+                    <p>Entrenador: Luis Gómez</p>
+                    <p>Fecha: 22/10/2025</p>
+                </div>
+                <span class="etiqueta tipo-tecnica">Técnica</span>
+            </div>
+
+            <div class="entrenamiento-card">
+                <div class="entrenamiento-info">
+                    <h3>Velocidad y Coordinación</h3>
+                    <p>Entrenador: Ana Torres</p>
+                    <p>Fecha: 25/10/2025</p>
+                </div>
+                <span class="etiqueta tipo-velocidad">Velocidad</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="historial-entrenamientos">
+        <h2>Historial de Entrenamientos</h2>
+        <table class="tabla-entrenamientos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Entrenador</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Resistencia Avanzada</td>
+                    <td>Pedro López</td>
+                    <td>10/10/2025</td>
+                    <td>Física</td>
+                    <td><span class="estado completado">Completado</span></td>
+                </tr>
+                <tr>
+                    <td>Control de Balón</td>
+                    <td>María Ramos</td>
+                    <td>12/10/2025</td>
+                    <td>Técnica</td>
+                    <td><span class="estado pendiente">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td>Trabajo en Equipo</td>
+                    <td>Juan García</td>
+                    <td>15/10/2025</td>
+                    <td>Táctico</td>
+                    <td><span class="estado completado">Completado</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+</body>
+</html>
