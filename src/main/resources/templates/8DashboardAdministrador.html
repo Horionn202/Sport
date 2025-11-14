@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +7,35 @@
   <link rel="stylesheet" href="/CSS/8DashboardAdministrador.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .section-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.section-btn {
+  padding: 12px 18px;
+  font-size: 16px;
+  background: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.section-btn:hover {
+  background: #374151;
+}
+
+  </style>
 </head>
 
 <body>
 
+  <!-- ========== SIDEBAR ========== -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
@@ -19,57 +44,79 @@
 
     <nav class="sidebar-menu">
       <a href="/"><i data-lucide="home"></i>Inicio</a>
-      <a href="#"><i data-lucide="users"></i> Usuarios</a>
-      <a href="#"><i data-lucide="shield"></i> Equipos</a>
-      <a href="#"><i data-lucide="user-check"></i> Entrenadores</a>
-      <a href="#"><i data-lucide="user"></i> Jugadores</a>
-      <a href="#"><i data-lucide="bar-chart"></i> Reportes</a>
+      <a href="#usuarios"><i data-lucide="users"></i> Usuarios</a>
+      <a href="#jugadores"><i data-lucide="user"></i> Jugadores</a>
+      <a href="/listado-ligas"><i data-lucide="shield"></i> Ligas</a>
+      <a href="#partidos"><i data-lucide="calendar"></i> Partidos</a>
       <a href="#"><i data-lucide="settings"></i> Configuración</a>
     </nav>
 
     <div class="logout">
-      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+      <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
     </div>
   </aside>
 
+
+  <!-- ========== MAIN CONTENT ========== -->
   <main class="main-content">
+
+    <!-- HEADER -->
     <header class="dashboard-header">
       <div class="profile-banner">
         <img src="/IMG/avatarAdmin.png" alt="Avatar Admin" class="avatar-large" />
         <div class="profile-info">
           <h1>Administrador General</h1>
-          <p>Gestión de Sport Connect</p>
+          <p>Panel de Gestión de Sport Connect</p>
           <span class="tag">Modo Administrador</span>
         </div>
       </div>
     </header>
 
+
+    <!-- CARDS RESUMEN -->
     <section class="summary-section">
       <div class="summary-card">
         <i data-lucide="users"></i>
         <h3>Usuarios Totales</h3>
-        <p>1,256</p>
+        <p th:text="${usuarios.size()}"></p>
       </div>
-      <div class="summary-card">
-        <i data-lucide="user-check"></i>
-        <h3>Entrenadores</h3>
-        <p>134</p>
-      </div>
+
       <div class="summary-card">
         <i data-lucide="user"></i>
         <h3>Jugadores</h3>
-        <p>987</p>
+        <p th:text="${jugadores.size()}"></p>
       </div>
+
       <div class="summary-card">
         <i data-lucide="shield"></i>
-        <h3>Equipos</h3>
-        <p>52</p>
+        <h3>Ligas</h3>
+        <p th:text="${ligas.size()}"></p>
+      </div>
+
+      <div class="summary-card">
+        <i data-lucide="calendar"></i>
+        <h3>Partidos</h3>
+        <p th:text="${partidos.size()}"></p>
       </div>
     </section>
 
-    <section class="table-section">
+<!-- BOTONES PARA CAMBIAR SECCIÓN -->
+<div class="section-buttons">
+  <button class="section-btn" onclick="showSection('usuarios')">Usuarios</button>
+  <button class="section-btn" onclick="showSection('jugadores')">Jugadores</button>
+  <button class="section-btn" onclick="showSection('ligas')">Ligas</button>
+  <button class="section-btn" onclick="showSection('partidos')">Partidos</button>
+</div>
+
+
+
+
+    <!-- ========== TABLA DE USUARIOS ========== -->
+    <div id="usuarios" class="content-section">
+<section id="usuarios" class="table-section">
       <div class="card">
         <h2><i data-lucide="users"></i> Gestión de Usuarios</h2>
+
         <table>
           <thead>
             <tr>
@@ -81,51 +128,165 @@
               <th>Acciones</th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td>#001</td>
-              <td>Juan Pérez</td>
-              <td>Jugador</td>
-              <td>juanperez@email.com</td>
-              <td><span class="status active">Activo</span></td>
-              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
-            </tr>
-            <tr>
-              <td>#002</td>
-              <td>Carlos Ramírez</td>
-              <td>Entrenador</td>
-              <td>carlosr@email.com</td>
-              <td><span class="status inactive">Suspendido</span></td>
-              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
-            </tr>
-            <tr>
-              <td>#003</td>
-              <td>Lucía Gómez</td>
-              <td>Jugador</td>
-              <td>luciagomez@email.com</td>
-              <td><span class="status active">Activo</span></td>
-              <td><button class="btn-small edit">Editar</button><button class="btn-small delete">Eliminar</button></td>
+            <tr th:each="u : ${usuarios}">
+              <td th:text="${u.id}"></td>
+              <td th:text="${u.nombre + ' ' + u.apellido}"></td>
+              <td th:text="${u.rol}"></td>
+              <td th:text="${u.email}"></td>
+
+              <td>
+                <span class="status"
+                  th:classappend="${u.rol == 'suspendido'} ? ' inactive' : ' active'"
+                  th:text="${u.rol == 'suspendido'} ? 'Suspendido' : 'Activo'">
+                </span>
+              </td>
+
+              <td>
+                <button class="btn-small edit">Editar</button>
+                    <form th:action="@{/usuario/eliminar/{id}(id=${u.id})}" method="post" style="display:inline;">
+        <button type="submit" class="btn-small delete">Eliminar</button>
+    </form>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </section>
+</section>
+    </div>
 
+
+
+    <!-- ========== TABLA DE JUGADORES ========== -->
+    <div id="jugadores" class="content-section" style="display:none;">
+    <section id="jugadores" class="table-section">
+          <div class="card">
+            <h2><i data-lucide="user"></i> Jugadores Registrados</h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Deporte</th>
+                  <th>Posición</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr th:each="j : ${jugadores}">
+                  <td th:text="${j.id}"></td>
+                  <td th:text="${j.nombre}"></td>
+                  <td th:text="${j.correo}"></td>
+                  <td th:text="${j.deporte}"></td>
+                  <td th:text="${j.posicion}"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </section>
+    </div>
+
+
+
+    <!-- ========== TABLA DE LIGAS ========== -->
+    <div id="ligas" class="content-section" style="display:none;">
+    <section id="ligas" class="table-section">
+          <div class="card">
+            <h2><i data-lucide="shield"></i> Ligas Registradas</h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Ubicación</th>
+                  <th>Temporada</th>
+                  <th>Equipos</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr th:each="l : ${ligas}">
+                  <td th:text="${l.id}"></td>
+                  <td th:text="${l.nombre}"></td>
+                  <td th:text="${l.ubicacion}"></td>
+                  <td th:text="${l.temporada}"></td>
+                  <td th:text="${l.equipos}"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </section>
+    </div>
+
+
+
+    <!-- ========== TABLA DE PARTIDOS ========== -->
+    <div id="partidos" class="content-section" style="display:none;">
+    <section id="partidos" class="table-section">
+          <div class="card">
+            <h2><i data-lucide="calendar"></i> Partidos</h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Local</th>
+                  <th>Visitante</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr th:each="p : ${partidos}">
+                  <td th:text="${p.id}"></td>
+                  <td th:text="${p.equipoLocal}"></td>
+                  <td th:text="${p.equipoVisitante}"></td>
+                  <td th:text="${p.fecha}"></td>
+                  <td th:text="${p.hora}"></td>
+                  <td th:text="${p.resultado}"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </section>
+    </div>
+
+
+
+    <!-- ACTIVIDAD DEL SISTEMA -->
     <section class="reports-section">
       <div class="card">
         <h2><i data-lucide="bar-chart-3"></i> Actividad del Sistema</h2>
         <ul class="activity-list">
-          <li>Nuevo jugador registrado — <strong>Juan Pérez</strong></li>
-          <li>Equipo <strong>Los Halcones</strong> actualizado</li>
-          <li>Usuario <strong>Carlos Ramírez</strong> suspendido</li>
-          <li>Se generó reporte semanal de actividad</li>
+          <li>Nuevo jugador registrado recientemente</li>
+          <li>Cambios recientes en las ligas</li>
+          <li>Actualizaciones de usuarios</li>
+          <li>Se generaron reportes automáticos</li>
         </ul>
       </div>
     </section>
+
   </main>
 
+ 
   <script>
-    lucide.createIcons();
-  </script>
+  function showSection(sectionId) {
+    // Ocultar todas las secciones
+    document.querySelectorAll('.content-section').forEach(sec => {
+      sec.style.display = 'none';
+    });
+
+    // Mostrar la sección seleccionada
+    document.getElementById(sectionId).style.display = 'block';
+  }
+</script>
+
 </body>
+
 </html>

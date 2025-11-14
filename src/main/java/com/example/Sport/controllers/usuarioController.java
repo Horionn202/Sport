@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+
+import com.example.Sport.services.jugadorService;
+import com.example.Sport.services.ligasService;
+import com.example.Sport.services.partidosService;
 import com.example.Sport.services.usuarioService;
 
 import com.example.Sport.models.UsuarioModel;
@@ -18,6 +23,12 @@ public class usuarioController {
 
     @Autowired
     private usuarioService usuarioService;
+     @Autowired
+    private partidosService partidosService;
+    @Autowired
+    private jugadorService jugadorService;
+    @Autowired
+    private ligasService ligasService;
 
     // Página de inicio
     @GetMapping("/")
@@ -64,13 +75,20 @@ public class usuarioController {
 
     // Página de dashboard administrador
     @GetMapping("/dashboard-administrador")
-    public String verDashboardAdministrador() {
-        return "8DashboardAdministrador";
-    }
+    public String verdashboard(Model model) {
+
+                    model.addAttribute("usuarios", usuarioService.listarUsuarios());
+                    model.addAttribute("jugadores", jugadorService.listarJugadores());
+                    model.addAttribute("ligas", ligasService.listarLigas());
+                    model.addAttribute("partidos", partidosService.listarPartidos());
+
+                    return "8DashboardAdministrador"; // → carpeta templates/admin/dashboard.html
+                }
 
     // Página de listado de ligas
     @GetMapping("/listado-ligas")
-    public String verListadoLigas() {
+    public String listadoLigas(Model model) {
+        model.addAttribute("ligas", ligasService.listarLigas());
         return "9ListadoLigas";
     }
 
@@ -144,6 +162,18 @@ public class usuarioController {
             model.addAttribute("error", "Usuario no encontrado");
             return "/login";
         }
+    }
+
+    @PostMapping("/listado-ligas/eliminar/{id}")
+    public String eliminarLiga(@PathVariable long id){
+        ligasService.eliminarLiga(id);
+        return "redirect:/dashboard-administrador";
+    }
+
+    @PostMapping("/usuario/eliminar/{id}")
+    public String eliminarUsuario(@PathVariable long id){
+        usuarioService.eliminarUsuario(id);
+        return "redirect:/dashboard-administrador";
     }
 
 

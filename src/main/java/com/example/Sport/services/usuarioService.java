@@ -12,7 +12,7 @@ public class usuarioService {
     @Autowired
     private usuarioRepo repo;
 
-    public List getAllUsuarios() {
+    public List<UsuarioModel> listarUsuarios() {
         return repo.findAll();
     }
 

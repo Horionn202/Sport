@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,9 +33,7 @@
         <div class="dropdown">
           <button class="dropbtn">Usuarios ▾</button>
           <div class="dropdown-content">
-            <a href="#">Dashboard Jugador</a>
-            <a href="#">Dashboard Entrenador</a>
-            <a href="#">Dashboard Administrador</a>
+            <a href="">Dashboard Jugador</a>
           </div>
         </div>
 
@@ -73,97 +71,33 @@
             <th><i data-lucide="users"></i> Equipos</th>
             <th><i data-lucide="more-horizontal"></i> Acciones</th>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Liga Metropolitana</td>
-            <td>Ciudad de México</td>
-            <td>2025</td>
-            <td>18</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga Juvenil Norte</td>
-            <td>Monterrey</td>
-            <td>2025</td>
-            <td>12</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga del Pacífico</td>
-            <td>Guadalajara</td>
-            <td>2025</td>
-            <td>16</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga Sureste</td>
-            <td>Mérida</td>
-            <td>2025</td>
-            <td>14</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga Universitaria</td>
-            <td>Puebla</td>
-            <td>2025</td>
-            <td>10</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga Infantil Centro</td>
-            <td>Querétaro</td>
-            <td>2025</td>
-            <td>8</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga Femenil Nacional</td>
-            <td>León</td>
-            <td>2025</td>
-            <td>12</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Liga de Campeones</td>
-            <td>Tijuana</td>
-            <td>2025</td>
-            <td>20</td>
-            <td class="acciones">
-              <button class="accion-btn"><i data-lucide="eye"></i></button>
-              <button class="accion-btn"><i data-lucide="edit"></i></button>
-              <button class="accion-btn eliminar"><i data-lucide="trash-2"></i></button>
-            </td>
-          </tr>
-        </tbody>
+              </thead>
+
+         <tbody>
+                <tr th:each="l : ${ligas}">
+                  <td th:text="${l.id}"></td>
+                  <td th:text="${l.nombre}"></td>
+                  <td th:text="${l.ubicacion}"></td>
+                  <td th:text="${l.temporada}"></td>
+                  <td th:text="${l.equipos}"></td>
+                  
+
+              <td class="acciones">
+                  <button class="accion-btn">
+                    <i data-lucide="eye"></i>
+                  </button>
+                  <button class="accion-btn">
+                    <i data-lucide="edit"></i>
+                  </button>
+      <form th:action="@{/listado-ligas/eliminar/{id}(id=${l.id})}" method="post" style="display:inline;">
+        <button class="accion-btn eliminar" type="submit">
+          <i data-lucide="trash-2"></i>
+        </button>
+      </form>
+                  </td>
+                </tr>
+              </tbody>
+        
       </table>
     </div>
   </section>
