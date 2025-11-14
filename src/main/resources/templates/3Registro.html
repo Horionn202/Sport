@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +18,7 @@
 
       <nav class="menu">
         <a href="/">Inicio</a>
-        <a href="/iniciar-sesion" class="btn-secondary">Iniciar Seción</a>
+        <a href="/iniciar-sesion" class="btn-secondary">Iniciar Sesión</a>
       </nav>
     </div>
   </header>
@@ -36,33 +36,28 @@
 
       <h2>Crear cuenta</h2>
 
-      <form action="#" method="POST">
-        <label for="fullname">Nombre completo</label>
-        <input type="text" id="fullname" placeholder="Tu nombre completo" required />
+      <!-- FORMULARIO THYMELEAF -->
+      <form th:action="@{/registro}" th:object="${usuario}" method="POST">
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" th:field="*{nombre}" placeholder="Tu nombre" required />
+
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" th:field="*{apellido}" placeholder="Tu apellido" required />
 
         <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="Ejemplo@correo.com" required />
+        <input type="email" id="email" th:field="*{email}" placeholder="Ejemplo@correo.com" required />
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Tu contraseña" required />
+        <label for="contrasena">Contrasensa</label>
+        <input type="password" id="contrasena" th:field="*{contrasena}" placeholder="Tu contraseña" required />
 
-        <label for="confirm-password">Confirmar contraseña</label>
-        <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required />
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" required />
 
-        <label for="birthdate">Fecha de nacimiento</label>
-        <input type="date" id="birthdate" required />
-
-        <label for="gender">Género (opcional)</label>
-        <select id="gender">
-          <option value="" selected disabled>Selecciona tu género</option>
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-          <option value="otro">Otro</option>
-        </select>
 
         <div class="options">
           <label>
-            <input type="checkbox" /> Acepto los términos y condiciones
+            <input type="checkbox" required /> Acepto los términos y condiciones
           </label>
         </div>
 

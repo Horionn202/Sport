@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"></html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,22 +36,29 @@
 
       <h2>Iniciar sesión</h2>
 
-      <form action="#" method="POST">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="Ejemplo@correo.com" required />
+    <form th:action="@{/login}" method="POST">
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Tu contraseña" required />
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" name="email"
+                                  placeholder="Ejemplo@correo.com" required>
+                        </div>
 
-        <div class="options">
-          <label>
-            <input type="checkbox" /> Recordarme
-          </label>
-          <a href="#">¿Olvidaste tu contraseña?</a>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" name="contrasena"
+                                  placeholder="Tu contraseña" required>
+                        </div>
 
-        <button class="btn-primary" type="submit">Iniciar sesión</button>
-      </form>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Iniciar Sesión
+                        </button>
+        </form>
+
+          <div class="text-center mt-3">
+               <a href="/registro">¿No tienes cuenta? Regístrate</a>
+         </div>
+
     </section>
   </main>
 

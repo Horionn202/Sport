@@ -1,10 +1,23 @@
 package com.example.Sport.controllers;
 
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import com.example.Sport.services.usuarioService;
+
+import com.example.Sport.models.UsuarioModel;
 
 @Controller
 public class usuarioController {
+
+    @Autowired
+    private usuarioService usuarioService;
 
     // Página de inicio
     @GetMapping("/")
@@ -13,15 +26,16 @@ public class usuarioController {
     }
 
     // Página de iniciar sesión
-    @GetMapping("/iniciar-sesion")
+    @GetMapping("/login")
     public String verLogin() {
         return "2IniciarSesion";
     }
 
     // Página de registro
-    @GetMapping("/registro")
-    public String verRegistro() {
-        return "3Registro";
+     @GetMapping("/registro")
+    public String mostrarFormularioRegistro(Model model) {
+        model.addAttribute("usuario", new UsuarioModel());
+        return "3registro";
     }
 
     // Página de registro jugador
@@ -93,4 +107,44 @@ public class usuarioController {
     public String verEntrenamiento(){
         return "14Entrenamientos";
     }
+
+    @PostMapping("/registro")
+    public String guardarUsuario(@ModelAttribute UsuarioModel usuario) {
+
+        usuario.setRol("USER");
+        usuarioService.saveUsuario(usuario);  
+
+        return "redirect:/login";
+    }
+
+
+    @PostMapping("/login")
+    public String iniciarSesion(@RequestParam("email") String email,
+                                @RequestParam("contrasena") String contrasena,
+                               Model model) {
+        var usuarioOpt = usuarioService.obtenerPorEmail(email);
+
+        if (usuarioOpt.isPresent()) {
+            UsuarioModel usuario = usuarioOpt.get();
+            if (usuario.getContrasena().equals(contrasena)) {
+                // Autenticación exitosa, redirigir según el rol
+                String rol = usuario.getRol();
+                if ("ADMIN".equals(rol)) {
+                    return "redirect:/dashboard-administrador";
+                } else if ("ENTRENADOR".equals(rol)) {
+                    return "redirect:/dashboard-entrenador";
+                } else {
+                    return "redirect:/dashboard-jugador";
+                }
+            } else {
+                model.addAttribute("error", "Contraseña incorrecta");
+                return "/login";
+            }
+        } else {
+            model.addAttribute("error", "Usuario no encontrado");
+            return "/login";
+        }
+    }
+
+
 }
