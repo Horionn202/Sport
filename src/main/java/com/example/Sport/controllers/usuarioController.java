@@ -16,6 +16,8 @@ import com.example.Sport.services.ligasService;
 import com.example.Sport.services.partidosService;
 import com.example.Sport.services.usuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 import com.example.Sport.models.UsuarioModel;
 
 @Controller
@@ -63,9 +65,20 @@ public class usuarioController {
 
     // Página de dashboard jugador
     @GetMapping("/dashboard-jugador")
-    public String verDashboardJugador() {
+    public String verDashboardJugador(HttpSession session, Model model) {
+
+        UsuarioModel usuario = (UsuarioModel) session.getAttribute("usuarioActual");
+
+        if (usuario == null) {
+            return "redirect:/login"; // por seguridad
+        }
+
+        model.addAttribute("usuario", usuario);
+
         return "6DashboardJugador";
     }
+
+    
     
     // Página de dashboard entrenador
     @GetMapping("/dashboard-entrenador")
@@ -74,17 +87,24 @@ public class usuarioController {
     }
 
     // Página de dashboard administrador
-    @GetMapping("/dashboard-administrador")
-    public String verdashboard(Model model) {
+        @GetMapping("/dashboard-administrador")
+        public String verdashboard(HttpSession session, Model model) {
 
-                    model.addAttribute("usuarios", usuarioService.listarUsuarios());
-                    model.addAttribute("jugadores", jugadorService.listarJugadores());
-                    model.addAttribute("ligas", ligasService.listarLigas());
-                    model.addAttribute("partidos", partidosService.listarPartidos());
+            UsuarioModel usuario = (UsuarioModel) session.getAttribute("usuarioActual");
 
-                    return "8DashboardAdministrador"; // → carpeta templates/admin/dashboard.html
-                }
+            if (usuario == null) {
+                return "redirect:/login";
+            }
 
+            model.addAttribute("usuario", usuario);
+
+            model.addAttribute("usuarios", usuarioService.listarUsuarios());
+            model.addAttribute("jugadores", jugadorService.listarJugadores());
+            model.addAttribute("ligas", ligasService.listarLigas());
+            model.addAttribute("partidos", partidosService.listarPartidos());
+
+            return "8DashboardAdministrador";
+        }
     // Página de listado de ligas
     @GetMapping("/listado-ligas")
     public String listadoLigas(Model model) {
@@ -139,13 +159,19 @@ public class usuarioController {
     @PostMapping("/login")
     public String iniciarSesion(@RequestParam("email") String email,
                                 @RequestParam("contrasena") String contrasena,
-                               Model model) {
+                                Model model,
+                                HttpSession session) {
+
         var usuarioOpt = usuarioService.obtenerPorEmail(email);
 
         if (usuarioOpt.isPresent()) {
             UsuarioModel usuario = usuarioOpt.get();
             if (usuario.getContrasena().equals(contrasena)) {
-                // Autenticación exitosa, redirigir según el rol
+
+                // 🔥 GUARDAMOS EL USUARIO EN SESIÓN
+                session.setAttribute("usuarioActual", usuario);
+
+                // Redirigir según rol
                 String rol = usuario.getRol();
                 if ("ADMIN".equals(rol)) {
                     return "redirect:/dashboard-administrador";
@@ -154,13 +180,14 @@ public class usuarioController {
                 } else {
                     return "redirect:/dashboard-jugador";
                 }
+
             } else {
                 model.addAttribute("error", "Contraseña incorrecta");
-                return "/login";
+                return "2IniciarSesion";
             }
         } else {
             model.addAttribute("error", "Usuario no encontrado");
-            return "/login";
+            return "2IniciarSesion";
         }
     }
 

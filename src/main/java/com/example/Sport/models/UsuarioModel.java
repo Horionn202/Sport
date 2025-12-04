@@ -17,8 +17,15 @@ public class UsuarioModel {
     private Long id;
 
     private String nombre;
+    private String usuario;
     private String apellido;
     private String email;
+    private String experiencia;
+    private String ciudad;
+    private String partidos;
+    private String goles;
+    private String asistencias;
+    private String equipo;
     private String contrasena;
     private LocalDate fechaNacimiento;
     private String rol;
@@ -30,6 +37,10 @@ public class UsuarioModel {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getUsuario(){
+        return usuario;
     }
 
     public String getApellido() {
@@ -52,6 +63,27 @@ public class UsuarioModel {
         return rol;
     }
 
+    public String getCiudad() {
+        return ciudad;
+    }
+    public String getPartidos() {
+        return partidos;
+    }
+    public String getGoles() {
+        return goles;
+    }
+    public String getAsistencias() {
+        return asistencias;
+    }
+    public String getEquipo() {
+        return equipo;
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+
     // SETTERS
     public void setId(Long id) {
         this.id = id;
@@ -59,6 +91,10 @@ public class UsuarioModel {
 
     public void setNombre(String nombre) {   // ← ESTE ES EL QUE TE FALTABA
         this.nombre = nombre;
+    }
+
+    public void setUsuario(String usuario){
+        this.usuario = usuario;
     }
 
     public void setApellido(String apellido) {
@@ -80,4 +116,25 @@ public class UsuarioModel {
     public void setRol(String rol) {
         this.rol = rol;
     }
+    
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+    public void setPartidos(String partidos) {
+        this.partidos = partidos;
+    }
+    public void setGoles(String goles) {
+        this.goles = goles;
+    }
+    public void setAsistencias(String asistencias) {
+        this.asistencias = asistencias;
+    }
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+
 }

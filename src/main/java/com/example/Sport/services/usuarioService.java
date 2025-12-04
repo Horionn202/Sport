@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.Sport.models.UsuarioModel;   
 import com.example.Sport.repositories.usuarioRepo;
+
 import java.util.*;;
 
 @Service
@@ -11,6 +12,8 @@ public class usuarioService {
 
     @Autowired
     private usuarioRepo repo;
+
+ 
 
     public List<UsuarioModel> listarUsuarios() {
         return repo.findAll();
@@ -30,6 +33,8 @@ public class usuarioService {
     public Optional<UsuarioModel> obtenerPorEmail(String email) {
         return repo.findByEmail(email);
     }
+
+
 
 }
 

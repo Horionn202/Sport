@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/CSS/6DashboardJugador.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
@@ -34,10 +35,10 @@
       <div class="profile-banner">
         <img src="/IMG/avatarJugador.png" alt="Avatar Jugador" class="avatar-large" />
         <div class="profile-info">
-          <h1 id="player-nickname">SuperJuan10</h1>
-          <p>Delantero en Los Halcones FC</p>
+          <h1 th:text="${usuario.usuario}">SuperJuan10</h1>
+          <p th:text="${usuario.equipo}">Delantero en Los Halcones FC</p>
           <span class="tag">Fútbol</span>
-          <span class="tag secondary">3 años de experiencia</span>
+          <span class="tag secondary" th:text="${usuario.experiencia}"></span>
         </div>
       </div>
     </header>
@@ -46,9 +47,9 @@
       <div class="card profile-card">
         <h2><i data-lucide="user"></i> Mi Perfil</h2>
         <div class="profile-data">
-          <div><strong>Nombre:</strong> <span id="player-name">Juan Pérez</span></div>
-          <div><strong>Correo:</strong> <span id="player-email">juanperez@example.com</span></div>
-          <div><strong>Ciudad:</strong> <span id="player-city">Madrid</span></div>
+          <div><strong>Nombre:</strong> <span  th:text="${usuario.nombre}" >usuario</span></div>
+          <div><strong>Correo:</strong> <span th:text="${usuario.email}"  >usuario@gmail.com</span></div>
+          <div><strong>Ciudad:</strong> <span th:text="${usuario.ciudad}">Ciudad</span></div>
         </div>
       </div>
 
@@ -58,22 +59,22 @@
           <div class="stat-item">
             <i data-lucide="activity"></i>
             <h3>Partidos</h3>
-            <p>56</p>
+            <p th:text="${usuario.partidos}">0</p>
           </div>
           <div class="stat-item">
             <i data-lucide="goal"></i>
             <h3>Goles</h3>
-            <p>34</p>
+            <p th:text="${usuario.goles}">0</p>
           </div>
           <div class="stat-item">
             <i data-lucide="arrow-up-right"></i>
             <h3>Asistencias</h3>
-            <p>22</p>
+            <p th:text="${usuario.asistencias}">0</p>
           </div>
           <div class="stat-item">
             <i data-lucide="shield"></i>
-            <h3>Equipo</h3>
-            <p>Los Halcones FC</p>
+            <h3 >Equipo</h3>
+            <p th:text="${usuario.equipo}">Sin equipo</p>
           </div>
         </div>
       </div>
@@ -91,23 +92,15 @@
     </section>
   </main>
 
-  <script>
-    lucide.createIcons();
+<script>
+  document.querySelectorAll(".stats-card p").forEach(p => {
+    if (!p.textContent.trim() || p.textContent.trim() === "null") {
+      p.textContent = "0";
+    }
+  });
+</script>
 
-    const jugador = {
-      nombre: "Juan Pérez",
-      nickname: "SuperJuan10",
-      email: "juanperez@example.com",
-      deporte: "Fútbol",
-      posicion: "Delantero",
-      experiencia: "3 años",
-      ciudad: "Madrid"
-    };
 
-    document.getElementById("player-name").textContent = jugador.nombre;
-    document.getElementById("player-nickname").textContent = jugador.nickname;
-    document.getElementById("player-email").textContent = jugador.email;
-    document.getElementById("player-city").textContent = jugador.ciudad;
-  </script>
+
 </body>
 </html>
