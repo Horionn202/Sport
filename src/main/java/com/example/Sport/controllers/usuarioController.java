@@ -78,8 +78,6 @@ public class usuarioController {
         return "6DashboardJugador";
     }
 
-    
-    
     // Página de dashboard entrenador
     @GetMapping("/dashboard-entrenador")
     public String verDashboardEntrenador() {
@@ -87,8 +85,8 @@ public class usuarioController {
     }
 
     // Página de dashboard administrador
-        @GetMapping("/dashboard-administrador")
-        public String verdashboard(HttpSession session, Model model) {
+    @GetMapping("/dashboard-administrador")
+    public String verdashboard(HttpSession session, Model model) {
 
             UsuarioModel usuario = (UsuarioModel) session.getAttribute("usuarioActual");
 
@@ -105,6 +103,8 @@ public class usuarioController {
 
             return "8DashboardAdministrador";
         }
+
+
     // Página de listado de ligas
     @GetMapping("/listado-ligas")
     public String listadoLigas(Model model) {
@@ -120,7 +120,15 @@ public class usuarioController {
     
     // Pagina Estadistica Jugador
     @GetMapping("/estadistica")
-    public String verEstadisticaJugador(){
+    public String verEstadisticaJugador(HttpSession session, Model model){
+        UsuarioModel usuario = (UsuarioModel) session.getAttribute("usuarioActual");
+
+        if (usuario == null) {
+            return "redirect:/login"; // por seguridad
+        }
+
+        model.addAttribute("usuario", usuario);
+        
         return "11EstadisticaJugador";
     }
 

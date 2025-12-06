@@ -41,19 +41,15 @@
   <section class="estadisticas-resumen">
     <div class="card">
       <h3>Goles</h3>
-      <p>24</p>
+      <p th:text="${usuario.goles}">0</p>
     </div>
     <div class="card">
       <h3>Asistencias</h3>
-      <p>11</p>
+      <p th:text="${usuario.asistencias}">0</p>
     </div>
     <div class="card">
       <h3>Partidos</h3>
-      <p>32</p>
-    </div>
-    <div class="card">
-      <h3>Minutos</h3>
-      <p>2,560</p>
+      <p th:text="${usuario.partidos}">0</p>
     </div>
   </section>
 
@@ -87,61 +83,18 @@
     </table>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('graficoRendimiento').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Sep 20', 'Sep 25', 'Sep 29', 'Oct 05', 'Oct 10', 'Oct 16'],
-        datasets: [
-          {
-            label: 'Goles',
-            data: [2, 1, 0, 2, 1, 2],
-            borderColor: '#00b85c',
-            backgroundColor: 'rgba(0, 184, 92, 0.15)',
-            tension: 0.4,
-            borderWidth: 3,
-            pointRadius: 4,
-            fill: true,
-          },
-          {
-            label: 'Asistencias',
-            data: [0, 2, 0, 0, 1, 1],
-            borderColor: '#007bff',
-            backgroundColor: 'rgba(0, 123, 255, 0.1)',
-            tension: 0.4,
-            borderWidth: 3,
-            pointRadius: 4,
-            fill: true,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            ticks: { color: '#444' },
-            grid: { color: '#eee' }
-          },
-          y: {
-            beginAtZero: true,
-            ticks: { color: '#444', stepSize: 1 },
-            grid: { color: '#eee' }
-          }
-        },
-        plugins: {
-          legend: {
-            labels: { color: '#222', font: { size: 13 } }
-          }
-        }
-      }
-    });
-  </script>
+  
 </main>
 
 
+
+<script>
+  document.querySelectorAll(".stats-card p").forEach(p => {
+    if (!p.textContent.trim() || p.textContent.trim() === "null") {
+      p.textContent = "0";
+    }
+  });
+</script>
 
 
 
