@@ -269,6 +269,15 @@ table tr:hover {
                 <label for="equipos">Número de Equipos</label>
                 <input type="number" id="equipos" th:field="*{equipos}" placeholder="Ej: 12" required />
             </div>
+            
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="tipo" th:field="*{estado}" required>
+                    <option value="">Seleccione</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Concluido">Concluido</option>
+                </select>
+            </div>
 
             <div class="form-actions">
                 <button type="submit" class="btn-save" th:text="${liga.id != null} ? 'Actualizar' : 'Crear'"></button>

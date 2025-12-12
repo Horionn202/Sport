@@ -6,6 +6,47 @@
   <title>Listado de Ligas</title>
   <link rel="stylesheet" href="/CSS/9ListadoLigas.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .contacto-liga {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+.contacto-liga h2 {
+  margin-bottom: 0.5rem;
+}
+
+.contacto-liga p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.contact-links a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #1a73e8;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.contact-links a:hover {
+  background-color: #155ab6;
+}
+
+.contact-links i {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+  </style>
 </head>
 <body>
   <header>
@@ -23,6 +64,23 @@
     </div>
   </header>
 
+    <section class="contacto-liga">
+    <h2>¿Deseas participar en alguna liga?</h2>
+    <p>Ponte en contacto con nosotros mediante:</p>
+    <div class="contact-links">
+      <a href="https://wa.me/945344284" target="_blank" class="contact-btn">
+        <i data-lucide="message-circle"></i> WhatsApp
+      </a>
+      <a href="https://discord.gg/nzhr4CGv" target="_blank" class="contact-btn">
+        <i data-lucide="slack"></i> Discord
+      </a>
+      <a href="mailto:73267272@certus.edu.pe" class="contact-btn">
+        <i data-lucide="mail"></i> Correo
+      </a>
+    </div>
+  </section>
+
+
   <section class="listado-ligas">
     <h1>Listado de Ligas</h1>
     <div class="tabla-container">
@@ -33,32 +91,19 @@
             <th><i data-lucide="map-pin"></i> Ubicación</th>
             <th><i data-lucide="calendar-days"></i> Temporada</th>
             <th><i data-lucide="users"></i> Equipos</th>
-            <th><i data-lucide="more-horizontal"></i> Acciones</th>
+            <th>estado</th>
           </tr>
               </thead>
 
          <tbody>
                 <tr th:each="l : ${ligas}">
-                  <td th:text="${l.id}"></td>
+                 
                   <td th:text="${l.nombre}"></td>
                   <td th:text="${l.ubicacion}"></td>
                   <td th:text="${l.temporada}"></td>
                   <td th:text="${l.equipos}"></td>
+                  <td th:text="${l.estado}"></td>
                   
-
-              <td class="acciones">
-                  <button class="accion-btn">
-                    <i data-lucide="eye"></i>
-                  </button>
-                  <button class="accion-btn">
-                    <i data-lucide="edit"></i>
-                  </button>
-      <form th:action="@{/listado-ligas/eliminar/{id}(id=${l.id})}" method="post" style="display:inline;">
-        <button class="accion-btn eliminar" type="submit">
-          <i data-lucide="trash-2"></i>
-        </button>
-      </form>
-                  </td>
                 </tr>
               </tbody>
         

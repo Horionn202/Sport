@@ -222,6 +222,7 @@ public class usuarioController {
         @GetMapping("/ligas")
         public String verligas(Model model){
             model.addAttribute("ligas", ligasService.listarLigas());
+            
             return "ligas";
         }
 
@@ -528,5 +529,17 @@ public String mostrarFormularioCrearEquipo(Model model) {
     }
 
 
+    @GetMapping("/crearLiga")
+    public String mostrarFormularioCrearLiga(Model model) {
+        model.addAttribute("liga", new ligasModel()); // Esto es obligatorio
+        return "ligaform";
+    }
+
+    @PostMapping("/guardarNuevaLiga")
+        public String guardarNuevaLiga(@ModelAttribute ligasModel liga,
+                                HttpSession session) {  
+        ligasService.guardarLiga(liga);
+        return "redirect:/dashboard-administrador";
+        }
 
 }

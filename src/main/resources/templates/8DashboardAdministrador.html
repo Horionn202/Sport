@@ -43,11 +43,8 @@
     </div>
 
     <nav class="sidebar-menu">
-      <a href="/"><i data-lucide="home"></i>Inicio</a>
-      <a href="/usuarios"><i data-lucide="users"></i> Usuarios</a>
-      <a href="/jugadores"><i data-lucide="user"></i> Jugadores</a>
+      <a href="/inicio"><i data-lucide="home"></i>Inicio</a>
       <a href="/listado-ligas"><i data-lucide="shield"></i> Ligas</a>
-      <a href="/partidos"><i data-lucide="calendar"></i> Partidos</a>
       <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
     </nav>
 
@@ -63,7 +60,7 @@
     <!-- HEADER -->
     <header class="dashboard-header">
       <div class="profile-banner">
-        <img src="/IMG/avatarAdmin.png" alt="Avatar Admin" class="avatar-large" />
+          <img src="../img/header/Usericon.webp" alt="Avatar Jugador" class="avatar-large" />
         <div class="profile-info">
           <h1>Administrador General</h1>
           <p>Panel de Gestión de Sport Connect</p>
@@ -151,6 +148,8 @@
                         Eliminar
                     </button>
                 </form>
+
+              
     </form>
               </td>
             </tr>
@@ -210,6 +209,7 @@
                         <th>Ubicación</th>
                         <th>Temporada</th>
                         <th>Equipos</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -220,11 +220,14 @@
                         <td th:text="${l.ubicacion}"></td>
                         <td th:text="${l.temporada}"></td>
                         <td th:text="${l.equipos}"></td>
+                        <td th:text="${l.estado}"></td>
                         <td>
                             <a th:href="@{/editarLiga/{id}(id=${l.id})}" class="btn-small edit">Editar</a>
                             <form th:action="@{/eliminarLiga/{id}(id=${l.id})}" method="post" style="display:inline;">
                                 <button type="submit" class="btn-small delete">Eliminar</button>
                             </form>
+                           <!-- crear liga -->
+                            <a href="/crearLiga" class="btn-small edit">Crear Liga</a>
                         </td>
                     </tr>
                 </tbody>
