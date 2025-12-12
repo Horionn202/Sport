@@ -91,7 +91,7 @@ public class usuarioController {
         return "3registro";
     }
 
-    // Página de registro jugador
+    // Página de registro jugadora
     @GetMapping("/registro-jugador")
     public String verRegistroJugador() {
         return "4RegistroJugador";
