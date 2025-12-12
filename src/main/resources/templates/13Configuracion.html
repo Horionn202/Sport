@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/13Configuracion.css">
+    <link rel="stylesheet" href="../CSS/darkmode.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,15 +16,15 @@
         </div>
 
         <nav class="sidebar-menu">
-        <a href="/"><i data-lucide="home"></i> Inicio</a>
-        <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
-        <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
-        <a href="#"><i data-lucide="users-2"></i> Equipos</a>
-        <a href="#"><i data-lucide="settings"></i> Configuración</a>
+        <a href="/dashboard-jugador"><i data-lucide="home"></i> Inicio</a>
+        <a href="/estadisticas" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+        <a href="/entrenamientos"><i data-lucide="target"></i> Entrenamientos</a>
+        <a href="/Equipos"><i data-lucide="users-2"></i> Equipos</a>
+        <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
         </nav>
 
         <div class="logout">
-        <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+        <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
         </div>
     </aside>
 
@@ -35,24 +36,29 @@
 
     <section class="config-section perfil">
         <h2>Perfil del Usuario</h2>
-        <form class="perfil-form">
-            <div class="form-group">
-                <label>Nombre completo</label>
-                <input type="text" placeholder="Ingresa tu nombre">
-            </div>
+           <form th:action="@{/Guardarconfiguracion}" th:object="${usuario}" method="post" class="perfil-form">
 
-            <div class="form-group">
-                <label>Correo electrónico</label>
-                <input type="email" placeholder="usuario@correo.com">
-            </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre" required>
+                </div>
 
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input type="password" placeholder="••••••••">
-            </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" th:field="*{email}" placeholder="usuario@correo.com" required>
+                </div>
 
-            <button type="submit" class="btn-guardar">Guardar cambios</button>
-        </form>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" th:field="*{contrasena}" placeholder="••••••••" >
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    <a href="javascript:history.back()" class="btn-cancel">Regresar</a>
+                </div>
+            </form>
+
     </section>
 
     <section class="config-section preferencias">
@@ -60,19 +66,13 @@
         <div class="preferencias-opciones">
             <div class="opcion">
                 <label>
-                    <input type="checkbox" checked>
-                    Notificaciones por correo
-                </label>
-            </div>
-            <div class="opcion">
-                <label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="modo-oscuro">
                     Modo oscuro
                 </label>
             </div>
             <div class="opcion">
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="recordar-sesion">
                     Recordar sesión
                 </label>
             </div>
@@ -88,6 +88,41 @@
     </section>
 </main>
 
+
+<script>
+    // Obtener referencias a los checkboxes
+    const modoOscuroCheckbox = document.getElementById('modo-oscuro');
+    const recordarSesionCheckbox = document.getElementById('recordar-sesion');
+
+    // Cargar preferencias guardadas
+    window.addEventListener('DOMContentLoaded', () => {
+        if(localStorage.getItem('modoOscuro') === 'true') {
+            modoOscuroCheckbox.checked = true;
+            document.body.classList.add('dark-mode'); // Opcional: cambiar tema
+        }
+        if(localStorage.getItem('recordarSesion') === 'true') {
+            recordarSesionCheckbox.checked = true;
+        }
+    });
+
+    // Guardar preferencias cuando cambian
+    modoOscuroCheckbox.addEventListener('change', () => {
+        localStorage.setItem('modoOscuro', modoOscuroCheckbox.checked);
+        document.body.classList.toggle('dark-mode', modoOscuroCheckbox.checked); // Cambia tema en tiempo real
+    });
+
+    recordarSesionCheckbox.addEventListener('change', () => {
+        localStorage.setItem('recordarSesion', recordarSesionCheckbox.checked);
+    });
+</script>
+
+<style>
+    /* Ejemplo rápido de modo oscuro */
+    .dark-mode {
+        background-color: #1e1e1e;
+        color: #f1f1f1;
+    }
+</style>
     
 </body>
 </html>

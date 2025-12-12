@@ -23,29 +23,17 @@
           <button class="dropbtn">Ligas ▾</button>
           <div class="dropdown-content">
             <a href="/listado-ligas">Listado de Ligas</a>
-            <a href="/login">Calendario de Partidos</a>
+            <a href="#">Calendario</a>
+
           </div>
         </div>
 
         <div class="dropdown">
-          <button class="dropbtn">Usuarios ▾</button>
-          <div class="dropdown-content">
-            <a href="/login">Dashboard Jugador</a>
-            <a href="/login">Dashboard Entrenador</a>
-            <a href="/login">Dashboard Administrador</a>
-          </div>
+            <a href="/dashboard-jugador">Usuario</a>
         </div>
 
+        <a href="/" class="btn-login">Cerrar Sesión</a>
 
-
-
-        <div class="dropdown">
-          <button class="dropbtn login">Login ▾</button>
-          <div class="dropdown-content">
-            <a href="/login">Iniciar Sesión</a>
-            <a href="/registro">Registro</a>
-          </div>
-        </div>
       </nav>
     </div>
   </header>
@@ -54,7 +42,7 @@
     <div class="hero-text">
       <h1>Gestiona tu <span>pasión deportiva</span></h1>
       <p>Organiza ligas, equipos y jugadores en una sola plataforma moderna y poderosa.</p>
-      <a href="/login" class="btn-primary" style="text-decoration: none;">Ir al Panel</a>
+      <button class="btn-primary">Ir al Panel</button>
     </div>
     <div class="hero-img">
       <img src="/IMG/Fondo.png" alt="Hero">
@@ -66,6 +54,7 @@
     <div class="card"><h3>Equipos registrados</h3><p th:text="${equipos.size()}"></p></div>
     <div class="card"><h3>Jugadores</h3><p th:text="${usuarios.size()}"></p></div>
   </section>
+
 
 
   <footer>

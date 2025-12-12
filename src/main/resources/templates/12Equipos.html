@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/12Equipo.css">
     <title>Document</title>
+    <style>
+        /* ==== MODO OSCURO PARA EQUIPOS ==== */
+body.dark-mode .equipos-main {
+    background-color: #0b0f1c;
+    color: #e5e5e5;
+}
+
+body.dark-mode .equipos-header h1,
+body.dark-mode .equipos-destacados h2,
+body.dark-mode .todos-equipos h2,
+body.dark-mode .equipo-card h3 {
+    color: #00ff85; /* verde brillante para resaltar */
+}
+
+body.dark-mode .equipo-card p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .btn-nuevo {
+    background-color: #00ff85;
+    color: #111827;
+}
+
+body.dark-mode .btn-nuevo:hover {
+    background-color: #00cc6a;
+}
+
+body.dark-mode .equipo-card {
+    background-color: #1e293b;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .categoria {
+    background-color: #00ff8540;
+    color: #00ff85;
+}
+
+    </style>
 </head>
 <body>
 
@@ -15,63 +53,76 @@
         </div>
 
         <nav class="sidebar-menu">
-        <a href="/"><i data-lucide="home"></i> Inicio</a>
-        <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
-        <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
-        <a href="#"><i data-lucide="users-2"></i> Equipos</a>
-        <a href="#"><i data-lucide="settings"></i> Configuración</a>
+        <a href="/dashboard-jugador"><i data-lucide="home"></i> Inicio</a>
+        <a href="/estadistica" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+        <a href="/entrenamientos"><i data-lucide="target"></i> Entrenamientos</a>
+        <a href="/Equipos"><i data-lucide="users-2"></i> Equipos</a>
+        <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
+        <div class="opcion">
+                <label>
+                <input type="checkbox" id="darkModeToggle">
+                Modo oscuro
+                </label>
+         </div>
         </nav>
 
         <div class="logout">
-        <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+        <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
         </div>
     </aside>
 
     <main class="equipos-main">
 
 
-    <section class="equipos-destacados">
-        <h2>Equipos Destacados</h2>
-        <div class="equipos-grid">
-            <div class="equipo-card">
-                <h3>Equipo 1</h3>
-                <p>Entrenador: Carlos Pérez</p>
-                <span class="categoria">Categoría: Sub-20</span>
-            </div>
-            <div class="equipo-card">
-                <h3>Equipo 2</h3>
-                <p>Entrenador: Juan López</p>
-                <span class="categoria">Categoría: Libre</span>
-            </div>
-            <div class="equipo-card">
-                <h3>Equipo 3</h3>
-                <p>Entrenador: Diego García</p>
-                <span class="categoria">Categoría: Femenino</span>
-            </div>
-        </div>
-    </section>
 
-    <section class="todos-equipos">
-        <h2>Todos los Equipos</h2>
-        <div class="equipos-grid">
-            <div class="equipo-card">
-                <h3>Equipo 4</h3>
-                <p>Entrenador: Luis Ramos</p>
-                <span class="categoria">Categoría: Sub-18</span>
+
+        <section class="todos-equipos">
+            <h2>Todos los Equipos</h2>
+            <div class="equipos-grid">
+
+                <div class="equipo-card" th:each="equipo : ${equipo}" >
+                    <h3 th:text="${equipo.nombre}">Nombre</h3>
+                    <p>Entrenador: <span th:text="${equipo.nombreEntrenador}">Entrenador</span></p>
+                    <p>Fundacion: <span th:text="${equipo.fechaFundacion}" >0000</span></p>
+                    <br>
+                    <p>Descripcion:
+                        <br> <span th:text="${equipo.Descripcion}" style="color: grey;"></span></p>
+                    
+                <form th:action="@{/unirseEquipo}" method="post">
+                    <input type="hidden" name="nombreEquipo" th:value="${equipo.nombre}">
+                    <button type="submit" class="tag secondary">Unirse al equipo</button>
+                </form>
+                </div>
+
+                
+
             </div>
-            <div class="equipo-card">
-                <h3>Equipo 5</h3>
-                <p>Entrenador: Ana Torres</p>
-                <span class="categoria">Categoría: Mixto</span>
-            </div>
-            <div class="equipo-card">
-                <h3>Equipo 6</h3>
-                <p>Entrenador: Jorge Silva</p>
-                <span class="categoria">Categoría: Libre</span>
-            </div>
-        </div>
-    </section>
+        </section>
+
 </main>
+
+<script>
+const darkModeToggle = document.querySelector('#darkModeToggle');
+const body = document.body;
+
+// Mantener preferencia guardada
+if(localStorage.getItem('dark-mode') === 'true') {
+    body.classList.add('dark-mode');
+    if(darkModeToggle) darkModeToggle.checked = true;
+}
+
+if(darkModeToggle){
+    darkModeToggle.addEventListener('change', () => {
+        if(darkModeToggle.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('dark-mode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('dark-mode', 'false');
+        }
+    });
+}
+</script>
 
 
     

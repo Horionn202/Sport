@@ -23,6 +23,8 @@ public class EquipoModel {
     private String nombreEntrenador;
     private Integer cantJugadores;
     private String descripcion;
+    private Integer partidosGanados = 0;
+    private Integer partidosPerdidos = 0;
 
     // Getters y Setter
 
@@ -88,6 +90,20 @@ public class EquipoModel {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getPartidosGanados() {
+        return partidosGanados;
+    }
+    public void setPartidosGanados(Integer partidosGanados) {
+        this.partidosGanados = partidosGanados;
+    }
+
+    public Integer getPartidosPerdidos() {
+        return partidosPerdidos;
+    }
+    public void setPartidosPerdidos(Integer partidosPerdidos) {
+        this.partidosPerdidos = partidosPerdidos;
     }
 
 

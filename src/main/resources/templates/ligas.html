@@ -17,7 +17,7 @@
 
       <nav class="menu">
         <div class="dropdown">
-         <a href="javascript:history.back()">Regresar</a>
+          <a href="/dashboard-entrenador">Volver</a>
         </div>
       </nav>
     </div>
@@ -39,25 +39,16 @@
 
          <tbody>
                 <tr th:each="l : ${ligas}">
-                  <td th:text="${l.id}"></td>
-                  <td th:text="${l.nombre}"></td>
-                  <td th:text="${l.ubicacion}"></td>
-                  <td th:text="${l.temporada}"></td>
-                  <td th:text="${l.equipos}"></td>
+                  <td  th:text="${l.nombre}"></td>
+                  <td style="text-align: center;" th:text="${l.ubicacion}"></td>
+                  <td style="text-align: center;" th:text="${l.temporada}"></td>
+                  <td style="text-align: center;" th:text="${l.equipos}"></td>
                   
 
               <td class="acciones">
                   <button class="accion-btn">
-                    <i data-lucide="eye"></i>
+                    <a href=""><i data-lucide="eye"></i></a>
                   </button>
-                  <button class="accion-btn">
-                    <i data-lucide="edit"></i>
-                  </button>
-      <form th:action="@{/listado-ligas/eliminar/{id}(id=${l.id})}" method="post" style="display:inline;">
-        <button class="accion-btn eliminar" type="submit">
-          <i data-lucide="trash-2"></i>
-        </button>
-      </form>
                   </td>
                 </tr>
               </tbody>

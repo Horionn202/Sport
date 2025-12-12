@@ -7,6 +7,88 @@
   <link rel="stylesheet" href="/CSS/6DashboardJugador.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ==== MODO OSCURO ==== */
+body.dark-mode {
+    background: #0b0f1c;
+    color: #e5e5e5;
+}
+
+body.dark-mode .sidebar {
+    background: #111827;
+    color: #e5e5e5;
+}
+
+body.dark-mode .sidebar-menu a {
+    color: #e5e5e5;
+}
+
+body.dark-mode .sidebar-menu a:hover,
+body.dark-mode .sidebar-menu a.active {
+    background: #ff8f00;
+    color: #fff;
+}
+
+body.dark-mode .logout a {
+    color: #facc15;
+}
+
+body.dark-mode .main-content {
+    background: #0b0f1c;
+    color: #e5e5e5;
+}
+
+body.dark-mode .profile-banner {
+    background: #1e293b;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card {
+    background: #1e293b;
+    color: #e5e5e5;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .profile-info p,
+body.dark-mode .profile-data div,
+body.dark-mode .activity-list li {
+    color: #cbd5e1;
+}
+
+body.dark-mode .tag {
+    background: #ff8f00;
+    color: #111827;
+}
+
+body.dark-mode .tag.secondary {
+    background: #19376d;
+}
+
+body.dark-mode .stat-item {
+    background: #1e293b;
+    color: #e5e5e5;
+}
+
+body.dark-mode .stat-item:hover {
+    background: #2c3a5a;
+}
+
+body.dark-mode .stat-item h3,
+body.dark-mode .stat-item p
+body.dark-mode .stat-item  {
+    color: #e5e5e5;
+}
+
+body.dark-mode h2 {
+    color: white;
+}
+
+body.dark-mode .stat-item i {
+    color: #ff8f00;
+}
+
+  </style>
+
 
 </head>
 
@@ -18,27 +100,34 @@
     </div>
 
     <nav class="sidebar-menu">
-      <a href="/"><i data-lucide="home"></i> Inicio</a>
+      <a href="/inicio"><i data-lucide="home"></i> Inicio</a>
       <a href="/estadistica" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
-      <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
-      <a href="#"><i data-lucide="users-2"></i> Equipos</a>
-      <a href="#"><i data-lucide="settings"></i> Configuración</a>
+      <a href="/entrenamientos"><i data-lucide="target"></i> Entrenamientos</a>
+      <a href="/Equipos"><i data-lucide="users-2"></i> Equipos</a>
+      <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
+      <div class="opcion">
+  <label>
+    <input type="checkbox" id="darkModeToggle">
+    Modo oscuro
+  </label>
+</div>
     </nav>
+    
 
     <div class="logout">
-      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+      <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
     </div>
   </aside>
 
   <main class="main-content">
     <header class="dashboard-header">
       <div class="profile-banner">
-        <img src="/IMG/avatarJugador.png" alt="Avatar Jugador" class="avatar-large" />
+        <img src="../img/PlayerIcon.png" alt="Avatar Jugador" class="avatar-large" />
         <div class="profile-info">
           <h1 th:text="${usuario.usuario}">SuperJuan10</h1>
           <p th:text="${usuario.equipo}">Delantero en Los Halcones FC</p>
           <span class="tag">Fútbol</span>
-          <span class="tag secondary" th:text="${usuario.experiencia}"></span>
+          <span class="tag secondary" th:text="${usuario.experiencia}"></span>      
         </div>
       </div>
     </header>
@@ -84,12 +173,15 @@
       <div class="card">
         <h2><i data-lucide="clock"></i> Actividad Reciente</h2>
         <ul class="activity-list">
-          <li>Victoria 3–1 frente a Leones FC</li>
-          <li>Entrenamiento completado - Resistencia</li>
-          <li>Próximo partido: 20/10 - Estadio Central</li>
+          <!-- Iteramos sobre la lista de actividades -->
+          <li th:each="act : ${actividades}">
+            <span th:text="${#temporals.format(act.fecha, 'dd/MM/yyyy HH:mm')}"></span> -
+            <span th:text="${act.descripcion}"></span>
+          </li>
         </ul>
       </div>
     </section>
+
   </main>
 
 <script>
@@ -99,6 +191,27 @@
     }
   });
 </script>
+
+<script>
+  const darkModeToggle = document.querySelector('#darkModeToggle');
+  const body = document.body;
+
+  if(localStorage.getItem('dark-mode') === 'true') {
+    body.classList.add('dark-mode');
+    darkModeToggle.checked = true;
+  }
+
+  darkModeToggle.addEventListener('change', () => {
+    if(darkModeToggle.checked) {
+      body.classList.add('dark-mode');
+      localStorage.setItem('dark-mode', 'true');
+    } else {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('dark-mode', 'false');
+    }
+  });
+</script>
+
 
 
 

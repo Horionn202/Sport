@@ -44,11 +44,11 @@
 
     <nav class="sidebar-menu">
       <a href="/"><i data-lucide="home"></i>Inicio</a>
-      <a href="#usuarios"><i data-lucide="users"></i> Usuarios</a>
-      <a href="#jugadores"><i data-lucide="user"></i> Jugadores</a>
+      <a href="/usuarios"><i data-lucide="users"></i> Usuarios</a>
+      <a href="/jugadores"><i data-lucide="user"></i> Jugadores</a>
       <a href="/listado-ligas"><i data-lucide="shield"></i> Ligas</a>
-      <a href="#partidos"><i data-lucide="calendar"></i> Partidos</a>
-      <a href="#"><i data-lucide="settings"></i> Configuración</a>
+      <a href="/partidos"><i data-lucide="calendar"></i> Partidos</a>
+      <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
     </nav>
 
     <div class="logout">
@@ -81,11 +81,6 @@
         <p th:text="${usuarios.size()}"></p>
       </div>
 
-      <div class="summary-card">
-        <i data-lucide="user"></i>
-        <h3>Jugadores</h3>
-        <p th:text="${jugadores.size()}"></p>
-      </div>
 
       <div class="summary-card">
         <i data-lucide="shield"></i>
@@ -95,8 +90,8 @@
 
       <div class="summary-card">
         <i data-lucide="calendar"></i>
-        <h3>Partidos</h3>
-        <p th:text="${partidos.size()}"></p>
+        <h3>Equipos</h3>
+        <p th:text="${equipos.size()}"></p>
       </div>
     </section>
 
@@ -105,7 +100,7 @@
   <button class="section-btn" onclick="showSection('usuarios')">Usuarios</button>
   <button class="section-btn" onclick="showSection('jugadores')">Jugadores</button>
   <button class="section-btn" onclick="showSection('ligas')">Ligas</button>
-  <button class="section-btn" onclick="showSection('partidos')">Partidos</button>
+  <button class="section-btn" onclick="showSection('partidos')">Equipos</button>
 </div>
 
 
@@ -144,9 +139,18 @@
               </td>
 
               <td>
-                <button class="btn-small edit">Editar</button>
-                    <form th:action="@{/usuario/eliminar/{id}(id=${u.id})}" method="post" style="display:inline;">
-        <button type="submit" class="btn-small delete">Eliminar</button>
+                <button class="btn-small edit" 
+                        th:onclick="'window.location.href=\'/admin/usuario/editar/' + ${u.id} + '\';'">
+                    Editar
+                </button>
+
+                <!-- Botón Eliminar -->
+                <form th:action="@{/admin/usuario/eliminar/{id}(id=${u.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn-small delete" 
+                            onclick="return confirm('¿Estás seguro que quieres eliminar este usuario?');">
+                        Eliminar
+                    </button>
+                </form>
     </form>
               </td>
             </tr>
@@ -170,19 +174,20 @@
                   <th>ID</th>
                   <th>Nombre</th>
                   <th>Correo</th>
-                  <th>Deporte</th>
                   <th>Posición</th>
+                
                 </tr>
               </thead>
 
               <tbody>
-                <tr th:each="j : ${jugadores}">
-                  <td th:text="${j.id}"></td>
-                  <td th:text="${j.nombre}"></td>
-                  <td th:text="${j.correo}"></td>
-                  <td th:text="${j.deporte}"></td>
-                  <td th:text="${j.posicion}"></td>
+                <tr th:each="u : ${usuarios}">
+                  <td th:text="${u.id}"></td>
+                  <td th:text="${u.nombre}"></td>
+                  <td th:text="${u.email}"></td>
+                  <td th:text="${u.posicion}"></td>
+                  
                 </tr>
+                
               </tbody>
             </table>
           </div>
@@ -193,82 +198,97 @@
 
     <!-- ========== TABLA DE LIGAS ========== -->
     <div id="ligas" class="content-section" style="display:none;">
-    <section id="ligas" class="table-section">
-          <div class="card">
+    <section class="table-section">
+        <div class="card">
             <h2><i data-lucide="shield"></i> Ligas Registradas</h2>
 
             <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Ubicación</th>
-                  <th>Temporada</th>
-                  <th>Equipos</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr th:each="l : ${ligas}">
-                  <td th:text="${l.id}"></td>
-                  <td th:text="${l.nombre}"></td>
-                  <td th:text="${l.ubicacion}"></td>
-                  <td th:text="${l.temporada}"></td>
-                  <td th:text="${l.equipos}"></td>
-                </tr>
-              </tbody>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Ubicación</th>
+                        <th>Temporada</th>
+                        <th>Equipos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="l : ${ligas}">
+                        <td th:text="${l.id}"></td>
+                        <td th:text="${l.nombre}"></td>
+                        <td th:text="${l.ubicacion}"></td>
+                        <td th:text="${l.temporada}"></td>
+                        <td th:text="${l.equipos}"></td>
+                        <td>
+                            <a th:href="@{/editarLiga/{id}(id=${l.id})}" class="btn-small edit">Editar</a>
+                            <form th:action="@{/eliminarLiga/{id}(id=${l.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn-small delete">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-          </div>
+        </div>
     </section>
-    </div>
+</div>
 
-
-
-    <!-- ========== TABLA DE PARTIDOS ========== -->
-    <div id="partidos" class="content-section" style="display:none;">
-    <section id="partidos" class="table-section">
-          <div class="card">
-            <h2><i data-lucide="calendar"></i> Partidos</h2>
+<!-- EQUIPOS -->
+<div id="partidos" class="content-section" style="display:none;">
+    <section class="table-section">
+        <div class="card">
+            <h2><i data-lucide="calendar"></i> Equipos</h2>
 
             <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Local</th>
-                  <th>Visitante</th>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                  <th>Resultado</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr th:each="p : ${partidos}">
-                  <td th:text="${p.id}"></td>
-                  <td th:text="${p.equipoLocal}"></td>
-                  <td th:text="${p.equipoVisitante}"></td>
-                  <td th:text="${p.fecha}"></td>
-                  <td th:text="${p.hora}"></td>
-                  <td th:text="${p.resultado}"></td>
-                </tr>
-              </tbody>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Deporte</th>
+                        <th>Ciudad</th>
+                        <th>Entrenador</th>
+                        <th>Jugadores</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="e : ${equipos}">
+                        <td th:text="${e.id}"></td>
+                        <td th:text="${e.nombre}"></td>
+                        <td th:text="${e.deporte}"></td>
+                        <td th:text="${e.ciudad}"></td>
+                        <td th:text="${e.nombreEntrenador}"></td>
+                        <td th:text="${e.cantJugadores}"></td>
+                        <td>
+                            <a th:href="@{/editarEquipo/{id}(id=${e.id})}" class="btn-small edit">Editar</a>
+                            <form th:action="@{/eliminarEquipo/{id}(id=${e.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn-small delete">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-          </div>
+        </div>
     </section>
-    </div>
-
+</div>s
 
 
     <!-- ACTIVIDAD DEL SISTEMA -->
     <section class="reports-section">
       <div class="card">
         <h2><i data-lucide="bar-chart-3"></i> Actividad del Sistema</h2>
-        <ul class="activity-list">
-          <li>Nuevo jugador registrado recientemente</li>
-          <li>Cambios recientes en las ligas</li>
-          <li>Actualizaciones de usuarios</li>
-          <li>Se generaron reportes automáticos</li>
+        <ul class="activity-list" id="actividad-lista">
+          <li th:each="act : ${actividades}">
+            <span th:text="${act.fecha} + ' - ' + ${act.descripcion}"></span>
+          </li>
         </ul>
+
+        <!-- Contenedor para las flechas -->
+        <div class="pagination-controls">
+          <button id="prev-btn">&larr; Anterior</button>
+          <span id="page-info"></span>
+          <button id="next-btn">Siguiente &rarr;</button>
+        </div>
       </div>
     </section>
 
@@ -286,6 +306,52 @@
     document.getElementById(sectionId).style.display = 'block';
   }
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll("#actividad-lista li");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const pageInfo = document.getElementById("page-info");
+
+    const itemsPerPage = 3;
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+
+    function showPage(page) {
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+
+      items.forEach((item, index) => {
+        item.style.display = index >= start && index < end ? "block" : "none";
+      });
+
+      pageInfo.textContent = `Página ${page} de ${totalPages}`;
+
+      // Desactivar botones si no hay más páginas
+      prevBtn.disabled = page === 1;
+      nextBtn.disabled = page === totalPages;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    // Mostrar la primera página al cargar
+    showPage(currentPage);
+  });
+</script>
+
 
 </body>
 

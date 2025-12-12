@@ -22,4 +22,8 @@ public class partidosService {
     public void eliminarPartido(Long id) {
         repo.deleteById(id);
     }
+
+
+
+ 
 }

@@ -28,6 +28,7 @@ public class UsuarioModel {
     private String equipo;
     private String contrasena;
     private LocalDate fechaNacimiento;
+    private String posicion;
     private String rol;
 
     // GETTERS
@@ -83,6 +84,9 @@ public class UsuarioModel {
         return experiencia;
     }
 
+    public String getPosicion() {
+        return posicion;
+    }
 
     // SETTERS
     public void setId(Long id) {
@@ -135,6 +139,10 @@ public class UsuarioModel {
 
     public void setExperiencia(String experiencia) {
         this.experiencia = experiencia;
+    }
+
+    public void setPosicion(String posicion) {
+        this.posicion = posicion;
     }
 
 }

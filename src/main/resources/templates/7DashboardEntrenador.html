@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,15 +17,13 @@
     </div>
 
     <nav class="sidebar-menu">
-      <a href="/"><i data-lucide="home"></i> Inicio</a>
-      <a href="#"><i data-lucide="users"></i> Jugadores</a>
-      <a href="#"><i data-lucide="calendar"></i> Entrenamientos</a>
-      <a href="#"><i data-lucide="bar-chart-3"></i> Estadísticas</a>
-      <a href="#"><i data-lucide="clipboard-list"></i> Estrategias</a>
+      <a href="/inicio"><i data-lucide="home"></i> Inicio</a>
+      <a href="/ligas"><i data-lucide="calendar"></i> Ligas</a>
+      <a href="/Equipos"><i data-lucide="bar-chart-3"></i> Equipos</a>
     </nav>
 
     <div class="logout">
-      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+      <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
     </div>
   </aside>
 
@@ -34,84 +32,113 @@
       <div class="profile-banner">
         <img src="/IMG/avatarEntrenador.png" alt="Avatar Entrenador" class="avatar-large" />
         <div class="profile-info">
-          <h1 id="coach-name">Carlos Ramírez</h1>
-          <p>Entrenador Principal - Los Halcones FC</p>
+          <h1 th:text="${usuario.nombre}">null</h1>
+          <p>Entrenador Principal - <span  th:text="${usuario.equipo}" ></span> </p>
           <span class="tag">Fútbol</span>
-          <span class="tag secondary">5 años de experiencia</span>
+          <span class="tag secondary" th:text="${usuario.experiencia}">null</span>
+          <a href="/entrenoForm" class="tag " style="
+          text-decoration: none; 
+          background-color: yellowgreen;
+          color: black;">
+            Crear Entrenamiento
+          </a>
+          <a href="/crearEquipo" class="tag" style="background-color: brown; text-decoration: none;">Crear Equipo</a>    
         </div>
       </div>
     </header>
 
-    <section class="team-section">
-      <div class="card">
-        <h2><i data-lucide="users"></i> Mi Equipo</h2>
-        <div class="team-grid">
-          <div class="player-card">
-            <img src="/IMG/jugador1.png" alt="Jugador 1" />
-            <h3>Juan Pérez</h3>
-            <p>Delantero</p>
-          </div>
-          <div class="player-card">
-            <img src="/IMG/jugador2.png" alt="Jugador 2" />
-            <h3>Andrés Torres</h3>
-            <p>Defensa</p>
-          </div>
-          <div class="player-card">
-            <img src="/IMG/jugador3.png" alt="Jugador 3" />
-            <h3>Pedro López</h3>
-            <p>Mediocampista</p>
-          </div>
-          <div class="player-card">
-            <img src="/IMG/jugador4.png" alt="Jugador 4" />
-            <h3>Roberto Díaz</h3>
-            <p>Portero</p>
-          </div>
-        </div>
+<section class="team-section">
+  <div class="card">
+    <h2><i data-lucide="users"></i> Mi Equipo</h2>
+    <div class="team-grid">
+
+      <div class="player-card" th:each="jugador : ${misCompañeros}">
+        <h3 th:text="${jugador.nombre} + ' ' + ${jugador.apellido}"></h3>
+        <p th:text="${jugador.posicion}"></p>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
 
     <section class="training-section">
       <div class="card">
         <h2><i data-lucide="calendar"></i> Próximos Entrenamientos</h2>
-        <ul class="training-list">
-          <li>Lunes 14:00 — Preparación física</li>
-          <li>Miércoles 16:00 — Tácticas ofensivas</li>
-          <li>Viernes 10:00 — Defensa y portería</li>
+
+        <ul class="training-list" th:if="${entrenamiento != null}">
+          <li th:each="entreno : ${entrenamiento}">
+            <span th:text="${entreno.fecha} + ' — ' + ${entreno.tipo} + ' — ' + ${entreno.nombre}"></span>
+          </li>
         </ul>
+
+        <p th:if="${entrenamiento == null}">No hay entrenamientos programados.</p>
       </div>
     </section>
 
     <section class="stats-section">
       <div class="card stats-card">
         <h2><i data-lucide="bar-chart-3"></i> Rendimiento del Equipo</h2>
+        <br><br><br><br><br>
+
         <div class="stats-grid">
+
           <div class="stat-item">
             <i data-lucide="trophy"></i>
             <h3>Victorias</h3>
-            <p>18</p>
+            <p id="victorias" th:text="${partidosGanados}">0</p>
           </div>
+
           <div class="stat-item">
             <i data-lucide="x-circle"></i>
             <h3>Derrotas</h3>
-            <p>4</p>
-          </div>
-          <div class="stat-item">
-            <i data-lucide="target"></i>
-            <h3>Promedio Goles</h3>
-            <p>2.3</p>
-          </div>
-          <div class="stat-item">
-            <i data-lucide="activity"></i>
-            <h3>Rendimiento</h3>
-            <p>92%</p>
+            <p id="derrotas" th:text="${partidosPerdidos}">0</p>
           </div>
         </div>
+           <div class="stat-item">
+            <i data-lucide="activity"></i>
+            <h3>Rendimiento</h3>
+            <p id="rendimiento">0%</p>
+          </div>
       </div>
     </section>
+    
   </main>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const ganados = parseInt(document.getElementById("victorias").textContent);
+    const perdidos = parseInt(document.getElementById("derrotas").textContent);
+
+    const total = ganados + perdidos;
+
+    let porcentaje = 0;
+    if (total > 0) {
+        porcentaje = (ganados / total) * 100;
+    }
+
+    // Animación del porcentaje
+    const rendimientoElemento = document.getElementById("rendimiento");
+    let current = 0;
+    const velocidad = 20; // ms por incremento
+    const incremento = porcentaje / 50; // divide en 50 pasos
+
+    const animar = setInterval(() => {
+        current += incremento;
+        if (current >= porcentaje) {
+            current = porcentaje; // asegurar que no pase del valor real
+            clearInterval(animar);
+        }
+        rendimientoElemento.textContent = current.toFixed(2) + "%";
+    }, velocidad);
+});
+</script>
+
 
   <script>
     lucide.createIcons();
   </script>
+
+
 </body>
 </html>

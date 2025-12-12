@@ -22,5 +22,10 @@ public class ligasService {
     public void eliminarLiga(Long id) {
         repo.deleteById(id);
     }
+
+    public ligasModel buscarPorId(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
     
 }

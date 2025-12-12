@@ -1,8 +1,10 @@
 package com.example.Sport.services;
 
+import com.example.Sport.models.JugadorModel;
 import com.example.Sport.models.entrenamientoModel;
 import com.example.Sport.repositories.entrenamientoRepo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,13 @@ public class entreamientoService {
     public entrenamientoModel obtenerporID(Long id) {
         return repo.findById(id).orElse(null);
     }
+
+    public List<entrenamientoModel> listarEntrenamientosPorEntrenador(String nombre) {
+        return repo.findByEntrenador(nombre);
+    }
     
+    public List<entrenamientoModel> listarTodos() {
+        return repo.findAllByOrderByFechaAsc();
+    }
+
 }

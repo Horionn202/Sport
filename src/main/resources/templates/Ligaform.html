@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - entrenoForm</title>
+  <link rel="stylesheet" href="/CSS/3Registro.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+ <style>
+
+
+/* Estilo de cada div interno */
+.equipo-form div {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.equipo-form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Inputs y textarea */
+.equipo-form input,
+.equipo-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Focus en inputs */
+.equipo-form input:focus,
+.equipo-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* Textarea con altura más cómoda */
+.equipo-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Botón de submit */
+.equipo-form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover en botón */
+.equipo-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .equipo-form {
+        padding: 20px;
+    }
+}
+
+/* Contenedor del formulario */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Título del formulario */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grupos de campos */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    outline: none;
+}
+
+/* Botones */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Botón guardar/actualizar */
+.btn-save {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+/* Botón cancelar */
+.btn-cancel {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: #495057;
+}
+
+/* Botones en tabla */
+.btn-small {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-small.edit {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-small.edit:hover {
+    background-color: #218838;
+}
+
+.btn-small.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-small.delete:hover {
+    background-color: #c82333;
+}
+
+/* Tabla básica */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+ </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <span>SPORT CONNECT</span>
+      </div>
+
+      <nav class="menu">
+        <a href="/inicio">Inicio</a>
+        <a href="/dashboard-administrador" class="btn-secondary">Regresar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="background">
+      <img src="/IMG/Fondo.png" alt="Fondo deportivo" />
+    </div>
+
+    <section class="login-card">
+      <div class="logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <h1>SPORT CONNECT</h1>
+      </div>
+
+      <h2>Crear Liga</h2>
+
+      <!-- FORMULARIO THYMELEAF -->
+        <form th:action="@{/guardarLiga}" th:object="${liga}" method="post">
+            
+            <!-- Campo oculto para el ID (solo si existe) -->
+            <input type="hidden" th:if="${liga.id != null}" th:field="*{id}" />
+
+            <div class="form-group">
+                <label for="nombre">Nombre de la Liga</label>
+                <input type="text" id="nombre" th:field="*{nombre}" placeholder="Ej: Liga Nacional" required />
+            </div>
+
+            <div class="form-group">
+                <label for="ubicacion">Ubicación</label>
+                <input type="text" id="ubicacion" th:field="*{ubicacion}" placeholder="Ej: Lima" required />
+            </div>
+
+            <div class="form-group">
+                <label for="temporada">Temporada</label>
+                <input type="number" id="temporada" th:field="*{temporada}" placeholder="Ej: 2025" required />
+            </div>
+
+            <div class="form-group">
+                <label for="equipos">Número de Equipos</label>
+                <input type="number" id="equipos" th:field="*{equipos}" placeholder="Ej: 12" required />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save" th:text="${liga.id != null} ? 'Actualizar' : 'Crear'"></button>
+                <a href="/dashboard-administrador" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Términos de Servicio</a>
+    </div>
+  </footer>
+</body>
+</html>

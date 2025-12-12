@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Connect - entrenoForm</title>
+  <link rel="stylesheet" href="/CSS/3Registro.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+ <style>
+
+
+/* Estilo de cada div interno */
+.equipo-form div {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.equipo-form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Inputs y textarea */
+.equipo-form input,
+.equipo-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Focus en inputs */
+.equipo-form input:focus,
+.equipo-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* Textarea con altura más cómoda */
+.equipo-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Botón de submit */
+.equipo-form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover en botón */
+.equipo-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .equipo-form {
+        padding: 20px;
+    }
+}
+
+ </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <span>SPORT CONNECT</span>
+      </div>
+
+      <nav class="menu">
+        <a href="/">Inicio</a>
+        <a href="/dashboard-entrenador" class="btn-secondary">Regresar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="background">
+      <img src="/IMG/Fondo.png" alt="Fondo deportivo" />
+    </div>
+
+    <section class="login-card">
+      <div class="logo">
+        <img src="/IMG/Logo.svg" alt="Logo Sport Connect">
+        <h1>SPORT CONNECT</h1>
+      </div>
+
+      <h2>Crear cuenta</h2>
+
+      <!-- FORMULARIO THYMELEAF -->
+<form th:action="@{/guardarEquipo}" th:object="${equipo}" method="post" class="equipo-form">
+    
+    <div>
+        <label for="nombre">Nombre del Equipo</label>
+        <input type="text" id="nombre" th:field="*{nombre}" placeholder="Ej: Los Tigres" required>
+    </div>
+
+    <div>
+        <label for="deporte">Deporte</label>
+        <input type="text" id="deporte" th:field="*{Deporte}" placeholder="Ej: Fútbol" required>
+    </div>
+
+    <div>
+        <label for="ciudad">Ciudad</label>
+        <input type="text" id="ciudad" th:field="*{ciudad}" placeholder="Ej: Lima" required>
+    </div>
+
+    <div>
+        <label for="fechaFundacion">Año de Fundación</label>
+        <input type="number" id="fechaFundacion" th:field="*{fechaFundacion}" placeholder="Ej: 2015" required>
+    </div>
+
+    <div>
+        <label for="cantJugadores">Cantidad de Jugadores</label>
+        <input type="number" id="cantJugadores" th:field="*{cantJugadores}" placeholder="Ej: 11" required>
+    </div>
+
+    <div>
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" th:field="*{descripcion}" placeholder="Breve descripción del equipo"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Crear Equipo</button>
+    </div>
+</form>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Sport Connect. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a>
+      <a href="#">Términos de Servicio</a>
+    </div>
+  </footer>
+</body>
+</html>

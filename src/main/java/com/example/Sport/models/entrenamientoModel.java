@@ -18,6 +18,7 @@ public class entrenamientoModel {
     private String fecha;
     private String tipo;
     private String estado;
+    private String hora;
 
     // Getters y Setters
     public Long getId() {
@@ -55,6 +56,12 @@ public class entrenamientoModel {
     }
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    public String getHora() {
+        return hora;
+    }
+    public void setHora(String hora) {
+        this.hora = hora;
     }
     
 }

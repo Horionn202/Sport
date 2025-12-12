@@ -2,6 +2,8 @@ package com.example.Sport.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.Sport.models.JugadorModel;
 import com.example.Sport.models.UsuarioModel;   
 import com.example.Sport.repositories.usuarioRepo;
 
@@ -32,6 +34,10 @@ public class usuarioService {
 
     public Optional<UsuarioModel> obtenerPorEmail(String email) {
         return repo.findByEmail(email);
+    }
+
+    public List<UsuarioModel> listarPorEquipo(String equipo) {
+        return repo.findByEquipo(equipo);
     }
 
 

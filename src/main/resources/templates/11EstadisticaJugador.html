@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/11Estadistica.css">
+    <style>
+      /* ==== MODO OSCURO PARA DASHBOARD JUGADOR ==== */
+body.dark-mode .estadisticas-jugador {
+    background: #0b0f1c;
+    color: #e5e5e5;
+}
+
+body.dark-mode .jugador-info h1,
+body.dark-mode .card h3,
+body.dark-mode .rendimiento-grafico h2,
+body.dark-mode .ultimos-partidos h2 {
+    color: #00ff85; /* un verde más brillante para resaltar */
+}
+
+body.dark-mode .datos-jugador p,
+body.dark-mode .card p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .foto-jugador {
+    border-color: #00ff85;
+}
+
+body.dark-mode .card {
+    background: #1e293b;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .grafico-contenedor,
+body.dark-mode .ultimos-partidos {
+    background: #1e293b;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    color: #e5e5e5;
+}
+
+body.dark-mode .ultimos-partidos th {
+    background: #00ff85;
+    color: #111827;
+}
+
+body.dark-mode .ultimos-partidos tr:hover {
+    background: #083918;
+}
+
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -14,15 +59,22 @@
     </div>
 
     <nav class="sidebar-menu">
-      <a href="/"><i data-lucide="home"></i> Inicio</a>
-      <a href="#" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
-      <a href="#"><i data-lucide="target"></i> Entrenamientos</a>
-      <a href="#"><i data-lucide="users-2"></i> Equipos</a>
-      <a href="#"><i data-lucide="settings"></i> Configuración</a>
+        <a href="/dashboard-jugador"><i data-lucide="home"></i> Inicio</a>
+        <a href="/estadisticas" ><i data-lucide="bar-chart-3"></i> Estadísticas</a>
+        <a href="/entrenamientos"><i data-lucide="target"></i> Entrenamientos</a>
+        <a href="/Equipos"><i data-lucide="users-2"></i> Equipos</a>
+        <a href="/configuracion"><i data-lucide="settings"></i> Configuración</a>
+             
+        <div class="opcion">
+            <label>
+              <input type="checkbox" id="darkModeToggle">
+              Modo oscuro
+            </label>
+          </div>
     </nav>
 
     <div class="logout">
-      <a href="/HTML/1Inicio.html"><i data-lucide="log-out"></i> Cerrar sesión</a>
+      <a href="/"><i data-lucide="log-out"></i> Cerrar sesión</a>
     </div>
   </aside>
 
@@ -32,8 +84,8 @@
     <div class="jugador-info">
       <img src="img/jugador.jpg" alt="Jugador" class="foto-jugador">
       <div class="datos-jugador">
-        <h1>Rafael Torres</h1>
-        <p>Delantero | FC Lima United</p>
+        <h1 th:text="${usuario.usuario}">Rafael Torres</h1>
+        <p th:text="${usuario.posicion + ' | ' + usuario.equipo}">Delantero | FC Lima United</p>
       </div>
     </div>
   </section>
@@ -56,32 +108,19 @@
   <section class="rendimiento-grafico">
     <h2>Rendimiento del Jugador</h2>
     <div class="grafico-contenedor">
-      <canvas id="graficoRendimiento"></canvas>
+      
+      <div th:if="${tieneDatos}">
+        <canvas id="graficoRendimiento"></canvas>
+      </div>
+
+      <div th:unless="${tieneDatos}">
+          <p>No hay suficientes datos para generar un gráfico.</p>
+      </div>
+
     </div>
   </section>
 
-  <section class="ultimos-partidos">
-    <h2>Últimos Partidos</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Rival</th>
-          <th>Resultado</th>
-          <th>Goles</th>
-          <th>Asistencias</th>
-          <th>Minutos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>10 Oct 2025</td><td>Equipo1</td><td>3 - 1</td><td>1</td><td>1</td><td>89'</td></tr>
-        <tr><td>05 Oct 2025</td><td>Equipo2</td><td>2 - 0</td><td>2</td><td>0</td><td>90'</td></tr>
-        <tr><td>29 Sep 2025</td><td>Equipo3</td><td>1 - 2</td><td>0</td><td>0</td><td>85'</td></tr>
-        <tr><td>25 Sep 2025</td><td>Eqiupo4</td><td>4 - 3</td><td>1</td><td>2</td><td>88'</td></tr>
-        <tr><td>20 Sep 2025</td><td>Equipo5</td><td>3 - 2</td><td>2</td><td>0</td><td>90'</td></tr>
-      </tbody>
-    </table>
-  </section>
+  
 
   
 </main>
@@ -95,6 +134,77 @@
     }
   });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script th:if="${tieneDatos}" th:inline="javascript">
+
+const fechas = /*[[${fechas}]]*/ [];
+const goles = /*[[${goles}]]*/ [];
+const asistencias = /*[[${asistencias}]]*/ [];
+
+const ctx = document.getElementById('graficoRendimiento').getContext('2d');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: fechas,
+    datasets: [
+      {
+        label: 'Goles',
+        data: goles,
+        backgroundColor: 'rgba(0, 184, 92, 0.6)',
+        borderColor: '#00b85c',
+        borderWidth: 2,
+        barThickness: 30,      // grosor fijo de barra
+        maxBarThickness: 30,   // evita barras gigantes
+      },
+      {
+        label: 'Asistencias',
+        data: asistencias,
+        backgroundColor: 'rgba(0, 123, 255, 0.6)',
+        borderColor: '#007bff',
+        borderWidth: 2,
+        barThickness: 30,
+        maxBarThickness: 30
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        suggestedMax: Math.max(...goles, ...asistencias) + 1
+      }
+    }
+  }
+});
+</script>
+
+<script>
+  const darkModeToggle = document.querySelector('#darkModeToggle');
+  const body = document.body;
+
+  if(localStorage.getItem('dark-mode') === 'true') {
+    body.classList.add('dark-mode');
+    darkModeToggle.checked = true;
+  }
+
+  darkModeToggle.addEventListener('change', () => {
+    if(darkModeToggle.checked) {
+      body.classList.add('dark-mode');
+      localStorage.setItem('dark-mode', 'true');
+    } else {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('dark-mode', 'false');
+    }
+  });
+</script>
+
+
+
 
 
 
