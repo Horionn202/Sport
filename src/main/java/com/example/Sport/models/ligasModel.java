@@ -19,6 +19,7 @@ public class ligasModel {
     private Integer temporada;
     private Integer equipos;
     private String estado;
+    private String fecha;
  
     // Getters y Setters
     public Long getId() {
@@ -56,6 +57,12 @@ public class ligasModel {
     }
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    public String getFecha() {
+        return fecha;
+    }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
     
 

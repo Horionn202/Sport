@@ -209,6 +209,7 @@
                         <th>Ubicación</th>
                         <th>Temporada</th>
                         <th>Equipos</th>
+                        <th>Fecha</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -220,6 +221,7 @@
                         <td th:text="${l.ubicacion}"></td>
                         <td th:text="${l.temporada}"></td>
                         <td th:text="${l.equipos}"></td>
+                        <td th:text="${l.fecha}"></td>
                         <td th:text="${l.estado}"></td>
                         <td>
                             <a th:href="@{/editarLiga/{id}(id=${l.id})}" class="btn-small edit">Editar</a>

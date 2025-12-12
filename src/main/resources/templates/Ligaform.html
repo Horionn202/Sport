@@ -279,6 +279,12 @@ table tr:hover {
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="fecha">Fecha de Inicio</label>
+                <input type="date" id="fecha" th:field="*{fecha}" required />
+
+            </div>
+
             <div class="form-actions">
                 <button type="submit" class="btn-save" th:text="${liga.id != null} ? 'Actualizar' : 'Crear'"></button>
                 <a href="/dashboard-administrador" class="btn-cancel">Cancelar</a>
